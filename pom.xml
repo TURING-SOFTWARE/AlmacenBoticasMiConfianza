@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.proyecto</groupId>
-    <artifactId>BoticasMiConfianza</artifactId>
+    <groupId>com.boticaconfianza</groupId>
+    <artifactId>boticasConfianzaAlmacen</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -13,14 +13,15 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>13</version>
+            <version>14</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>13</version>
+            <version>14</version>
         </dependency>
-        <dependency>
+        
+          <dependency>
     <groupId>com.jfoenix</groupId>
     <artifactId>jfoenix</artifactId>
     <version>9.0.1</version>
@@ -41,7 +42,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.4</version>
                 <configuration>
-                    <mainClass>com.proyecto.boticasmiconfianza.App</mainClass>
+                    <mainClass>com.boticaconfianza.boticasconfianzaalmacen.App</mainClass>
                 </configuration>
                 <executions>
                     <execution>

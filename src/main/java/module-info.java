@@ -1,7 +1,8 @@
-module com.proyecto.boticasmiconfianza {
+module com.boticaconfianza.boticasconfianzaalmacen {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.base;
 
-    opens com.proyecto.boticasmiconfianza to javafx.fxml;
-    exports com.proyecto.boticasmiconfianza;
+    opens com.boticaconfianza.boticasconfianzaalmacen to javafx.fxml;
+    exports com.boticaconfianza.boticasconfianzaalmacen;
 }

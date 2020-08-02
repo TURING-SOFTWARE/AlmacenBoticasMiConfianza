@@ -1,4 +1,4 @@
-package com.proyecto.boticasmiconfianza;
+package com.boticaconfianza.boticasconfianzaalmacen;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
