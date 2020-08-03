@@ -2,6 +2,10 @@
  * Empty Stylesheet file.
  */
 
+.recuperacion:hover {
+  color: #00FF00;
+}
+
 .mainFxmlClass {
 
 }
