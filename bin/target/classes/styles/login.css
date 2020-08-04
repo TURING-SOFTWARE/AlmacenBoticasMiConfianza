@@ -1,0 +1,20 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.recuperacion:hover {
+  color: #00FF00;
+}
+
+.close-btn{
+    -fx-background-color:transparent;
+}
+
+.close-btn:hover{
+    -fx-background-color:red;
+}
+
+
+.mainFxmlClass {
+
+}

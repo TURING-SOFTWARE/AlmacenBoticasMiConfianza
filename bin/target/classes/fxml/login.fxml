@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="412.0" prefWidth="330.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boticaconfianza.boticasconfianzaalmacen.LoginController">
+    <stylesheets>
+        <URL value="@/styles/login.css" />
+    </stylesheets>
+   <children>
+      <JFXButton fx:id="btnIniciar" layoutX="94.0" layoutY="280.0" onAction="#Iniciar" prefHeight="41.0" prefWidth="148.0" style="-fx-background-color: #3646CA;" text="Iniciar" textFill="#f2efef">
+         <font>
+            <Font size="14.0" />
+         </font></JFXButton>
+      <JFXPasswordField fx:id="txtPass"  labelFloat="true" layoutX="58.0" layoutY="206.0" prefHeight="27.0" prefWidth="214.0" promptText="Contraseña" />
+      <JFXTextField fx:id="txtUser" labelFloat="true" layoutX="58.0" layoutY="148.0" prefHeight="27.0" prefWidth="214.0" promptText="Usuario" />
+      
+
+      <Label id="recuperacion" layoutX="102.0" layoutY="350.0" style="-fx-cursor: Mouse;" text="Olvidaste tu contraseña?" underline="true" />
+      <FontAwesomeIcon fill="#3646ca" iconName="USER" layoutX="132.0" layoutY="119.0" size="7em" />
+      <FontAwesomeIcon style="background-color: #3646CA;" iconName="CLOSE" layoutX="303.0" layoutY="28.0" size="2em" />
+      <FontAwesomeIcon iconName="MINUS" layoutX="274.0" layoutY="29.0" size="2em" />
+   
+   </children>
+</AnchorPane>
