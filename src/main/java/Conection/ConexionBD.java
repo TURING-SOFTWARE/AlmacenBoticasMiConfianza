@@ -32,6 +32,7 @@ public class ConexionBD {
             cn.con.close();
         }catch(Exception e){
             System.err.println("Error: "+e);
+            
         }
         
         }

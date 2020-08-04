@@ -14,12 +14,12 @@
         <URL value="@/styles/login.css" />
     </stylesheets>
    <children>
-      <JFXButton layoutX="94.0" layoutY="280.0" prefHeight="41.0" prefWidth="148.0" style="-fx-background-color: #3646CA;" text="Iniciar" textFill="#f2efef">
+      <JFXButton fx:id="btnIniciar" layoutX="94.0" layoutY="280.0" onAction="#Iniciar" prefHeight="41.0" prefWidth="148.0" style="-fx-background-color: #3646CA;" text="Iniciar" textFill="#f2efef">
          <font>
             <Font size="14.0" />
          </font></JFXButton>
-      <JFXPasswordField labelFloat="true" layoutX="58.0" layoutY="206.0" prefHeight="27.0" prefWidth="214.0" promptText="Contraseña" />
-      <JFXTextField labelFloat="true" layoutX="58.0" layoutY="148.0" prefHeight="27.0" prefWidth="214.0" promptText="Usuario" />
+      <JFXPasswordField fx:id="txtPass" labelFloat="true" layoutX="58.0" layoutY="206.0" prefHeight="27.0" prefWidth="214.0" promptText="Contraseña" />
+      <JFXTextField fx:id="txtUser" labelFloat="true" layoutX="58.0" layoutY="148.0" prefHeight="27.0" prefWidth="214.0" promptText="Usuario" />
       <FontAwesomeIcon id="close" glyphName="CLOSE" layoutX="290.0" layoutY="40.0" selectionFill="#b53838" size="2em" />
       <FontAwesomeIcon glyphName="USER" layoutX="142.0" layoutY="115.0" size="5em" />
       <Label id="recuperacion" layoutX="102.0" layoutY="350.0" style="-fx-cursor: Mouse;" stylesheets="@../../../styles/login.css" text="Olvidaste tu contraseña?" underline="true" />
