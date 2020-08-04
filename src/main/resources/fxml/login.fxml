@@ -32,6 +32,7 @@
      
      
       <Label id="recuperacion" layoutX="102.0" layoutY="360.0" style="-fx-cursor: Mouse;" text="Olvidaste tu contraseña?" underline="true" />
+      <Label fx:id="lblErrors" alignment="CENTER" contentDisplay="CENTER" layoutX="111.0" layoutY="255.0" />
      
    </children>
 </AnchorPane>

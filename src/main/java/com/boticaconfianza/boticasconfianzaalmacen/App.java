@@ -24,7 +24,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
          Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
          stage.initStyle(StageStyle.UNDECORATED);
-        stage.setMaximized(false);
+         stage.setMaximized(false);
         
         
         
