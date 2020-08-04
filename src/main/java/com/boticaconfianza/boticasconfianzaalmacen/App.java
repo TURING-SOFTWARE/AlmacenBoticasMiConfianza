@@ -28,7 +28,7 @@ public class App extends Application {
         
         
         
-        //grab your root here
+        
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -37,8 +37,7 @@ public class App extends Application {
             }
         });
 
-        //sorry about that - Windows defender issue.
-        //move around here
+       
         root.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -50,7 +49,7 @@ public class App extends Application {
         
         
         
-        scene = new Scene(root, 340, 440);
+        scene = new Scene(root, 330, 412);
         stage.setScene(scene);
         stage.show();
         

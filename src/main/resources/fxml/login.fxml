@@ -6,6 +6,8 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -14,15 +16,22 @@
         <URL value="@/styles/login.css" />
     </stylesheets>
    <children>
-      <JFXButton fx:id="btnIniciar" layoutX="94.0" layoutY="280.0" onAction="#Iniciar" prefHeight="41.0" prefWidth="148.0" style="-fx-background-color: #3646CA;" text="Iniciar" textFill="#f2efef">
+      <FontAwesomeIcon iconName="MINUS" layoutX="271.0" layoutY="33.0" size="2em" />
+      <FontAwesomeIcon iconName="CLOSE" layoutX="298.0" layoutY="31.0" size="2em" />
+      <ImageView fitHeight="110.0" fitWidth="97.0" layoutX="126.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/icono.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="txtUser" labelFloat="true" layoutX="58.0" layoutY="162.0" prefHeight="27.0" prefWidth="214.0" promptText="Usuario" />
+      <JFXPasswordField fx:id="txtPass" labelFloat="true" layoutX="58.0" layoutY="217.0" prefHeight="27.0" prefWidth="214.0" promptText="Contraseña" />
+      <JFXButton fx:id="btnIniciar" layoutX="94.0" layoutY="290.0" onAction="#Iniciar" prefHeight="41.0" prefWidth="148.0" style="-fx-background-color: #3646CA;" text="Iniciar" textFill="#f2efef">
          <font>
             <Font size="14.0" />
          </font></JFXButton>
-      <JFXPasswordField fx:id="txtPass" labelFloat="true" layoutX="58.0" layoutY="206.0" prefHeight="27.0" prefWidth="214.0" promptText="Contraseña" />
-      <JFXTextField fx:id="txtUser" labelFloat="true" layoutX="58.0" layoutY="148.0" prefHeight="27.0" prefWidth="214.0" promptText="Usuario" />
-      <FontAwesomeIcon id="close" glyphName="CLOSE" layoutX="290.0" layoutY="40.0" selectionFill="#b53838" size="2em" />
-      <FontAwesomeIcon glyphName="USER" layoutX="142.0" layoutY="115.0" size="5em" />
-      <Label id="recuperacion" layoutX="102.0" layoutY="350.0" style="-fx-cursor: Mouse;" stylesheets="@../../../styles/login.css" text="Olvidaste tu contraseña?" underline="true" />
-      <FontAwesomeIcon glyphName="MINUS" layoutX="266.0" layoutY="40.0" selectionFill="#b53838" size="2em" />
+     
+     
+      <Label id="recuperacion" layoutX="102.0" layoutY="360.0" style="-fx-cursor: Mouse;" text="Olvidaste tu contraseña?" underline="true" />
+     
    </children>
 </AnchorPane>
