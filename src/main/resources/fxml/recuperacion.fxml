@@ -13,6 +13,7 @@
         <URL value="@/styles/recuperacion.css" />
     </stylesheets>
    <children>
+      <FontAwesomeIcon fill="#3646ca" iconName="KEY" layoutX="149.0" layoutY="130.0" size="6em" />
       <JFXButton fx:id="lblreturn" alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="8.0" onMouseClicked="#regresar" prefHeight="33.0" prefWidth="32.0" text=" ">
          <graphic>
            
@@ -25,8 +26,8 @@
          </cursor>
       </JFXButton>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutY="170.0" prefHeight="17.0" prefWidth="381.0" text="Ingrese su Codigo de Recuperacion:" />
-      <JFXTextField layoutX="118.0" layoutY="207.0" />
-      <JFXButton layoutX="144.0" layoutY="259.0" prefHeight="39.0" prefWidth="93.0" style="-fx-background-color: #3646CA;" text="Validar" textFill="#f2f2f2" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-3.0" layoutY="326.0" prefHeight="17.0" prefWidth="381.0" />
+      <JFXTextField fx:id="txtval" layoutX="118.0" layoutY="207.0" />
+      <Label fx:id="lblErrors" alignment="CENTER" contentDisplay="CENTER" layoutX="-3.0" layoutY="326.0" prefHeight="17.0" prefWidth="381.0" />
+      <JFXButton fx:id="btnValidar" layoutX="119.0" layoutY="266.0" onAction="#Validar" prefHeight="39.0" prefWidth="137.0" style="-fx-background-color: #3646ca;" text="Validar" textFill="#f2eded" />
    </children>
 </AnchorPane>

@@ -38,6 +38,7 @@ public class LoginController implements Initializable {
     @FXML
     private Label lblErrors;
     
+ 
    
      @FXML
     private Label lblRecup;
@@ -72,7 +73,7 @@ public class LoginController implements Initializable {
             setLblError(Color.TOMATO, "Los campos están vacíos");
             
         } else {
-            String sql = "SELECT * FROM usuarios Where username = ? and cotrasena = ?";
+            String sql = "SELECT * FROM usuarios Where username = ? and contrasena = ?";
             try {
                 preparedStatement = con.prepareStatement(sql);
                 preparedStatement.setString(1, user);
@@ -81,7 +82,7 @@ public class LoginController implements Initializable {
                 if (resultSet.next()) {
                     Alert dialogoAlerta = new Alert(Alert.AlertType.INFORMATION);
                     dialogoAlerta.setTitle("Iniciar Sesión");
-                    dialogoAlerta.setContentText("Usuario y Cotraseña correctos");
+                    dialogoAlerta.setContentText("Usuario y Contraseña correctos");
                     dialogoAlerta.initStyle(StageStyle.UTILITY);
                     dialogoAlerta.showAndWait();
                     Node node = (Node) event.getSource();
