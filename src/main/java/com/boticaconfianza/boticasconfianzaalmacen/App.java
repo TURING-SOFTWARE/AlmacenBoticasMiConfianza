@@ -49,7 +49,7 @@ public class App extends Application {
         
         
         
-        scene = new Scene(root, 330, 412);
+        scene = new Scene(root, 343, 435);
         stage.setScene(scene);
         stage.show();
         

@@ -4,10 +4,11 @@ module com.boticaconfianza.boticasconfianzaalmacen {
     requires java.base;
     requires java.sql;
     requires com.jfoenix;
-    
+   
     
     
     opens com.boticaconfianza.boticasconfianzaalmacen to javafx.fxml;
     exports com.boticaconfianza.boticasconfianzaalmacen;
+    
     
 }

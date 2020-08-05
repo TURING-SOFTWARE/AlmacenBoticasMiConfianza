@@ -38,9 +38,7 @@ public class LoginController implements Initializable {
     @FXML
     private Label lblErrors;
     
-//    @FXML
-//    private FontAwesomeIcon btnclose;
-    
+   
      @FXML
     private Label lblRecup;
 
@@ -52,6 +50,14 @@ public class LoginController implements Initializable {
 
     @FXML
     private JFXButton btnIniciar;
+    
+    
+    @FXML
+    private JFXButton btnminimize;
+    
+    @FXML
+    private JFXButton btnclose;
+
 
     @FXML
     void Iniciar(ActionEvent event) throws IOException {
@@ -101,13 +107,26 @@ public class LoginController implements Initializable {
     
         @FXML
     void recuperar(MouseEvent event) throws IOException {
-        Node node = (Node) event.getSource();
+                   Node node = (Node) event.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
                     stage.close();
                     Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/recuperacion.fxml")));
                     stage.setScene(scene);
                     stage.show();
         
+    }
+    
+    
+        @FXML
+    void minimizar(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    stage.setIconified(true);
+                    
+    }
+    
+    @FXML
+    void cerrar(MouseEvent event) {
+        System.exit(0);
     }
 
     public LoginController() {
