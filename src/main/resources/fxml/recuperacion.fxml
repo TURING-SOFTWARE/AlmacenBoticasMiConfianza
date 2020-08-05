@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="381.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.boticaconfianza.boticasconfianzaalmacen.RecuperacionController">
+<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="381.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boticaconfianza.boticasconfianzaalmacen.RecuperacionController">
     <stylesheets>
         <URL value="@/styles/recuperacion.css" />
     </stylesheets>
+   <children>
+      <JFXButton fx:id="lblreturn" alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="8.0" onMouseClicked="#regresar" prefHeight="33.0" prefWidth="32.0" text=" ">
+         <graphic>
+           
+         </graphic>
+         <graphic>
+            <FontAwesomeIcon iconName="ANGLE_LEFT" selectionFill="#e1e0e0" size="3em" />
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="170.0" prefHeight="17.0" prefWidth="381.0" text="Ingrese su Codigo de Recuperacion:" />
+      <JFXTextField layoutX="118.0" layoutY="207.0" />
+      <JFXButton layoutX="144.0" layoutY="259.0" prefHeight="39.0" prefWidth="93.0" style="-fx-background-color: #3646CA;" text="Validar" textFill="#f2f2f2" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-3.0" layoutY="326.0" prefHeight="17.0" prefWidth="381.0" />
+   </children>
 </AnchorPane>
