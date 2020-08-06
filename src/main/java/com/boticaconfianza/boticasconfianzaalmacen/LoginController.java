@@ -109,7 +109,7 @@ public class LoginController implements Initializable {
                     
                     
                     stage.setScene(scene);
-//                    stage.setFullScreen(true);
+                    //stage.setFullScreen(true);
                     stage.show();
                      
                      
@@ -126,6 +126,76 @@ public class LoginController implements Initializable {
 
     }
 
+    
+    
+    @FXML
+    void presionar(KeyEvent event) throws IOException {
+        
+        String user = txtUser.getText();
+        String pass = txtPass.getText();
+
+        if (user.equals("") && pass.equals("")) {
+
+            setLblError(Color.TOMATO, "Los campos están vacíos");
+
+        } else {
+            String sql = "SELECT * FROM usuarios Where username = ? and contrasena = ?";
+            try {
+                preparedStatement = con.prepareStatement(sql);
+                preparedStatement.setString(1, user);
+                preparedStatement.setString(2, pass);
+                resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    Alert dialogoAlerta = new Alert(Alert.AlertType.INFORMATION);
+                    dialogoAlerta.setTitle("Iniciar Sesión");
+                    dialogoAlerta.setContentText("Usuario y Contraseña correctos");
+                    dialogoAlerta.initStyle(StageStyle.UTILITY);
+                    dialogoAlerta.showAndWait();
+                    
+                    Node node = (Node) event.getSource();
+                    Stage stage = (Stage) node.getScene().getWindow();
+                    stage.close();
+                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/main.fxml")));
+                    
+        
+                    scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            xOffset = event.getSceneX();
+                            yOffset = event.getSceneY();
+                        }
+                    });
+
+                    scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            stage.setX(event.getScreenX() - xOffset);
+                            stage.setY(event.getScreenY() - yOffset);
+                        }
+                    });
+                    
+                    
+                    stage.setScene(scene);
+                    //stage.setFullScreen(true);
+                    stage.show();
+                     
+                     
+                     
+                } else if (!resultSet.next()) {
+                    setLblError(Color.PURPLE, "Usuario y/o Cotraseña Incorrectos");
+                }
+
+            } catch (SQLException ex) {
+                System.err.println(ex.getMessage());
+
+            }
+        }
+        
+        
+
+    }
+    
+    
     @FXML
     void recuperar(MouseEvent event) throws IOException {
         Node node = (Node) event.getSource();

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="435.0" prefWidth="343.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boticaconfianza.boticasconfianzaalmacen.LoginController">
+<AnchorPane id="AnchorPane" onKeyPressed="#presionar" prefHeight="435.0" prefWidth="343.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boticaconfianza.boticasconfianzaalmacen.LoginController">
     <stylesheets>
         <URL value="@/styles/login.css" />
     </stylesheets>
