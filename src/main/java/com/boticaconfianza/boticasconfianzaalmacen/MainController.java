@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -30,6 +31,10 @@ public class MainController implements Initializable {
     private double xOffset = 0;
     private double yOffset = 0;
 
+    @FXML
+    private AnchorPane myPane;
+
+    
     @FXML
     private JFXButton btniMinimize;
 
@@ -44,25 +49,23 @@ public class MainController implements Initializable {
         System.exit(0);
     }
     
-    int i = 1;
+    Stage stage = null;
+    
+    
     @FXML
     void maximizar(MouseEvent event) {
-        boolean b = false;
         
-        if (event.getButton().equals(MouseButton.PRIMARY)) {
-            if (event.getClickCount()> 1) {
-                b = true;
-            } else {
-                b = false;
-
-            }
-
-        }
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setFullScreen(b);
+        
+       stage = (Stage) myPane.getScene().getWindow();
+       if(stage.isMaximized())
+           stage.setMaximized(false);
+       else
+           stage.setMaximized(true);
 
     }
+        
+       
+    
 
     @FXML
     void minimizar(MouseEvent event) {

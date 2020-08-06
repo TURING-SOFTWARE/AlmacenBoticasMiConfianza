@@ -21,6 +21,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -164,6 +166,14 @@ public class LoginController implements Initializable {
         System.exit(0);
     }
 
+      @FXML
+        void IniciarEnter(KeyEvent event) throws IOException {
+            if(event.getCode().equals(KeyCode.ENTER)){
+                
+            }
+                
+    }
+    
     public LoginController() {
         con = ConexionBD.conDB();
     }
@@ -179,4 +189,6 @@ public class LoginController implements Initializable {
 
     }
 
+    
+    
 }
