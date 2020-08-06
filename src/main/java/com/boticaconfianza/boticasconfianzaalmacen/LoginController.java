@@ -105,7 +105,7 @@ public class LoginController implements Initializable {
                         }
                     });
                     stage.setScene(scene);
-                    stage.setMaximized(true);
+                    stage.setFullScreen(true);
                     stage.show();
                      
                      

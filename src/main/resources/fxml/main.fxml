@@ -3,10 +3,46 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <AnchorPane layoutX="-6.0" layoutY="-2.0" prefHeight="772.0" prefWidth="195.0" style="-fx-background-color: #4472C4#4472C4;" AnchorPane.bottomAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="46.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/icono.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="184.0" prefHeight="100.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Principal" textFill="#f8f8f8" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="0.0">
+               <graphic>
+                  <FontAwesomeIcon fill="#f2f0f0" iconName="HOME" size="2em" />
+               </graphic>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="300.0" prefHeight="100.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Productos" textFill="#f8f8f8" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="0.0">
+               <graphic>
+                  <FontAwesomeIcon fill="#f2f2f2" size="2em" />
+               </graphic>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="429.0" prefHeight="100.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Inventario" textFill="#f8f8f8">
+               <graphic>
+                  <FontAwesomeIcon fill="#f2f2f2" size="2em" />
+               </graphic>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="553.0" prefHeight="100.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Reportes" textFill="#f8f8f8">
+               <graphic>
+                  <FontAwesomeIcon fill="#f2f2f2" size="2em" />
+               </graphic>
+            </JFXButton>
+            <JFXButton contentDisplay="CENTER" layoutX="37.0" layoutY="698.0" text=" " AnchorPane.bottomAnchor="47.0">
+               <graphic>
+                  <FontAwesomeIcon />
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
       <JFXButton buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="525.0" layoutY="-2.0" text=" " textFill="#cfc51f" wrapText="true" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="-2.0">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -23,10 +59,5 @@
             <FontAwesomeIcon iconName="CLOSE" size="2em" />
          </graphic>
       </JFXButton>
-      <AnchorPane prefHeight="400.0" prefWidth="127.0">
-         <children>
-            <JFXButton />
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>
