@@ -170,6 +170,8 @@ public class LoginController implements Initializable {
         void IniciarEnter(KeyEvent event) throws IOException {
             if(event.getCode().equals(KeyCode.ENTER)){
                 
+        
+    
             }
                 
     }
