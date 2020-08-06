@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -32,15 +33,15 @@ import javafx.stage.StageStyle;
  */
 public class LoginController implements Initializable {
 
+    private double xOffset = 0;
+    private double yOffset = 0;
     Connection con = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     @FXML
     private Label lblErrors;
-    
- 
-   
-     @FXML
+
+    @FXML
     private Label lblRecup;
 
     @FXML
@@ -51,14 +52,12 @@ public class LoginController implements Initializable {
 
     @FXML
     private JFXButton btnIniciar;
-    
-    
+
     @FXML
     private JFXButton btnminimize;
-    
+
     @FXML
     private JFXButton btnclose;
-
 
     @FXML
     void Iniciar(ActionEvent event) throws IOException {
@@ -66,12 +65,10 @@ public class LoginController implements Initializable {
         String user = txtUser.getText();
         String pass = txtPass.getText();
 
-        
-        
         if (user.equals("") && pass.equals("")) {
-            
+
             setLblError(Color.TOMATO, "Los campos están vacíos");
-            
+
         } else {
             String sql = "SELECT * FROM usuarios Where username = ? and contrasena = ?";
             try {
@@ -85,14 +82,35 @@ public class LoginController implements Initializable {
                     dialogoAlerta.setContentText("Usuario y Contraseña correctos");
                     dialogoAlerta.initStyle(StageStyle.UTILITY);
                     dialogoAlerta.showAndWait();
+                    
                     Node node = (Node) event.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
                     stage.close();
                     Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/main.fxml")));
+                    
+        
+                    scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            xOffset = event.getSceneX();
+                            yOffset = event.getSceneY();
+                        }
+                    });
+
+                    scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            stage.setX(event.getScreenX() - xOffset);
+                            stage.setY(event.getScreenY() - yOffset);
+                        }
+                    });
                     stage.setScene(scene);
+                    stage.setFullScreen(true);
                     stage.show();
-                }
-               else if(!resultSet.next()){
+                     
+                     
+                     
+                } else if (!resultSet.next()) {
                     setLblError(Color.PURPLE, "Usuario y/o Cotraseña Incorrectos");
                 }
 
@@ -103,28 +121,42 @@ public class LoginController implements Initializable {
         }
 
     }
-    
-    
-    
-        @FXML
+
+    @FXML
     void recuperar(MouseEvent event) throws IOException {
-                   Node node = (Node) event.getSource();
-                    Stage stage = (Stage) node.getScene().getWindow();
-                    stage.close();
-                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/recuperacion.fxml")));
-                    stage.setScene(scene);
-                    stage.show();
-        
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/recuperacion.fxml")));
+
+        scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+
+        scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+            }
+        });
+
+        stage.setScene(scene);
+        stage.show();
+
     }
-    
-    
-        @FXML
+
+    @FXML
     void minimizar(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                    stage.setIconified(true);
-                    
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
+
     }
-    
+
     @FXML
     void cerrar(MouseEvent event) {
         System.exit(0);
@@ -134,13 +166,12 @@ public class LoginController implements Initializable {
         con = ConexionBD.conDB();
     }
 
-    
     private void setLblError(Color color, String text) {
         lblErrors.setTextFill(color);
         lblErrors.setText(text);
         System.out.println(text);
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 

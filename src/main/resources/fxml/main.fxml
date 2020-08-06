@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boticaconfianza.boticasconfianzaalmacen.MainController">
-    <stylesheets>
-        <URL value="@/styles/main.css"/>
-    </stylesheets>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="525.0" layoutY="-2.0" text=" " textFill="#cfc51f" wrapText="true" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="-2.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <FontAwesomeIcon iconName="MINUS" size="2em" />
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="563.0" layoutY="-2.0" prefHeight="36.0" prefWidth="24.0" text=" " textFill="#cf391f" wrapText="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <FontAwesomeIcon iconName="CLOSE" size="2em" />
+         </graphic>
+      </JFXButton>
+   </children>
 </AnchorPane>
