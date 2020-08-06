@@ -5,8 +5,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <JFXButton buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="525.0" layoutY="-2.0" text=" " textFill="#cfc51f" wrapText="true" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="-2.0">
          <cursor>
@@ -24,5 +23,10 @@
             <FontAwesomeIcon iconName="CLOSE" size="2em" />
          </graphic>
       </JFXButton>
+      <AnchorPane prefHeight="400.0" prefWidth="127.0">
+         <children>
+            <JFXButton />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
