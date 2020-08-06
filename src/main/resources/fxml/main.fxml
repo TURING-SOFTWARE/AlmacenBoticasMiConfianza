@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="722.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="722.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boticaconfianza.boticasconfianzaalmacen.MainController">
    <children>
       <AnchorPane layoutX="-6.0" layoutY="-2.0" prefHeight="772.0" prefWidth="195.0" style="-fx-background-color: #4472C4#4472C4;" AnchorPane.bottomAnchor="-2.0" AnchorPane.topAnchor="-2.0">
          <children>
@@ -49,21 +48,43 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <JFXButton fx:id="btnclose" buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="563.0" layoutY="-2.0" onMouseClicked="#cerrar" prefHeight="36.0" prefWidth="24.0" text=" " textFill="#cf391f" wrapText="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
+      <JFXButton fx:id="btniMinimize" contentDisplay="CENTER" layoutX="939.0" layoutY="-5.0" onMouseClicked="#minimizar" text=" " textFill="#eeeba4" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="0.0">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/minimize.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-         <graphic>
-            <FontAwesomeIcon iconName="CLOSE" size="2em" />
-         </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnminimize" buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="525.0" layoutY="-2.0" onMouseClicked="#minimizar" text=" " textFill="#cfc51f" wrapText="true" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="-2.0">
+      <JFXButton fx:id="btnMaximizar" contentDisplay="CENTER" layoutX="961.0" onMouseClicked="#maximizar" prefHeight="30.0" prefWidth="37.0" text=" " textFill="#1f7950" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/maximize.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-         <graphic>
-            <FontAwesomeIcon iconName="MINUS" size="2em" />
-         </graphic>
       </JFXButton>
+      <JFXButton fx:id="btnCerrar" contentDisplay="CENTER" layoutX="920.0" onMouseClicked="#cerrar" text=" " textFill="#c94343" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/close.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton text=" " AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="915.0" />
+    
    </children>
 </AnchorPane>
