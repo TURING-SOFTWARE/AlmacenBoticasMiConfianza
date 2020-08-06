@@ -17,6 +17,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+
 /**
  * FXML Controller class
  *
@@ -24,11 +25,24 @@ import javafx.stage.Window;
  */
 public class MainController implements Initializable {
   
-
-   
     
+    @FXML
+    private JFXButton btnclose;
+
+    @FXML
+    private JFXButton btnminimize;
    
-  
+    @FXML
+    void minimizar(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
+
+    }
+
+    @FXML
+    void cerrar(MouseEvent event) {
+        System.exit(0);
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -43,20 +43,20 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="525.0" layoutY="-2.0" text=" " textFill="#cfc51f" wrapText="true" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="-2.0">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <FontAwesomeIcon iconName="MINUS" size="2em" />
-         </graphic>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="563.0" layoutY="-2.0" prefHeight="36.0" prefWidth="24.0" text=" " textFill="#cf391f" wrapText="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
+      <JFXButton fx:id="btnclose" buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="563.0" layoutY="-2.0" onMouseClicked="#cerrar" prefHeight="36.0" prefWidth="24.0" text=" " textFill="#cf391f" wrapText="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
          <graphic>
             <FontAwesomeIcon iconName="CLOSE" size="2em" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnminimize" buttonType="RAISED" contentDisplay="CENTER" ellipsisString="" layoutX="525.0" layoutY="-2.0" onMouseClicked="#minimizar" text=" " textFill="#cfc51f" wrapText="true" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="-2.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <FontAwesomeIcon iconName="MINUS" size="2em" />
          </graphic>
       </JFXButton>
    </children>
