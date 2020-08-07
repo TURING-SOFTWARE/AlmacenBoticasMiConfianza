@@ -60,10 +60,10 @@ public class LoginController implements Initializable {
 
     @FXML
     private JFXButton btnclose;
-
-    @FXML
-    void Iniciar(ActionEvent event) throws IOException {
-
+    
+    
+    public void Iniciando(ActionEvent event) throws IOException{
+       
         String user = txtUser.getText();
         String pass = txtPass.getText();
 
@@ -109,7 +109,7 @@ public class LoginController implements Initializable {
                     
                     
                     stage.setScene(scene);
-                    //stage.setFullScreen(true);
+                    stage.setFullScreen(true);
                     stage.show();
                      
                      
@@ -123,6 +123,17 @@ public class LoginController implements Initializable {
 
             }
         }
+
+
+    
+
+}
+    
+    
+    @FXML
+    void Iniciar(ActionEvent event) throws IOException {
+        
+       Iniciando (event);
 
     }
 

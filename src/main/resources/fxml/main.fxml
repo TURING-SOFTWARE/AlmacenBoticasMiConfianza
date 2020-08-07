@@ -85,6 +85,18 @@
          </cursor>
       </JFXButton>
       <JFXButton text=" " AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="915.0" />
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="229.0" layoutY="191.0" prefHeight="121.0" prefWidth="217.0" style="-fx-background-color: #FEFDFD;" text=" " AnchorPane.leftAnchor="240.0" />
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="495.0" layoutY="191.0" prefHeight="121.0" prefWidth="217.0" style="-fx-background-color: #FEFDFD;" text=" " AnchorPane.leftAnchor="507.0" AnchorPane.rightAnchor="300.0" />
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="764.0" layoutY="192.0" prefHeight="121.0" prefWidth="217.0" style="-fx-background-color: #FEFDFD;" text=" " AnchorPane.rightAnchor="40.0" />
+      <JFXButton layoutX="346.0" layoutY="27.0" prefHeight="141.0" prefWidth="536.0" text=" " AnchorPane.leftAnchor="346.0" AnchorPane.rightAnchor="142.0">
+         <graphic>
+            <ImageView fitHeight="123.0" fitWidth="643.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/logo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
     
    </children>
 </AnchorPane>
