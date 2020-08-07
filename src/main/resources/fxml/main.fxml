@@ -8,95 +8,113 @@
 
 <AnchorPane fx:id="myPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="722.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boticaconfianza.boticasconfianzaalmacen.MainController">
    <children>
-      <AnchorPane layoutX="-6.0" layoutY="-2.0" prefHeight="772.0" prefWidth="195.0" style="-fx-background-color: #4472C4#4472C4;" AnchorPane.bottomAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+      <AnchorPane prefHeight="13.0" prefWidth="1024.0" style="-fx-background-color: #FFFF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="46.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/icono.png" />
-               </image>
-            </ImageView>
-            <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="184.0" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Principal" textFill="#f8f8f8" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="0.0" />
-            <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="285.0" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Productos" textFill="#f8f8f8" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="0.0" />
-            <JFXButton buttonType="RAISED" layoutX="4.0" layoutY="387.0" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Inventario" textFill="#f8f8f8" />
-            <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="487.0" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Reportes" textFill="#f8f8f8" />
-            <JFXButton contentDisplay="CENTER" layoutX="37.0" layoutY="698.0" text=" " AnchorPane.bottomAnchor="47.0" />
-            <ImageView fitHeight="25.0" fitWidth="35.0" layoutX="40.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/pildora.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="25.0" fitWidth="35.0" layoutX="45.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/home.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="35.0" layoutX="37.0" layoutY="413.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/inventario.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="35.0" layoutX="37.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/reporte.png" />
-               </image>
-            </ImageView>
-            <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="7.0" layoutY="591.0" prefHeight="100.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="        Mantenimiento" textAlignment="RIGHT" textFill="#f8f8f8" />
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="41.0" layoutY="629.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/mantenimiento.png" />
-               </image>
-            </ImageView>
+            <JFXButton prefHeight="13.0" prefWidth="21.0" text=" " />
+            <JFXButton fx:id="btnCerrar" contentDisplay="CENTER" onMouseClicked="#cerrar" text=" " textFill="#c94343" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/close.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btniMinimize" contentDisplay="CENTER" onMouseClicked="#minimizar" text=" " textFill="#cfc51f" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/minimize.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnMaximizar" contentDisplay="CENTER" onMouseClicked="#maximizar" prefHeight="30.0" prefWidth="37.0" text=" " textFill="#1f7950" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/maximize.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
          </children>
       </AnchorPane>
-      <JFXButton fx:id="btniMinimize" contentDisplay="CENTER" layoutX="939.0" layoutY="-5.0" onMouseClicked="#minimizar" text=" " textFill="#eeeba4" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="0.0">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+      <AnchorPane layoutX="-6.0" layoutY="-2.0" prefHeight="772.0" prefWidth="195.0" style="-fx-background-color: #4472C4#4472C4;" AnchorPane.bottomAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+         <children>
+            <ImageView fitHeight="125.0" fitWidth="99.0" layoutX="56.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../imagenes/minimize.png" />
+                  <Image url="@../imagenes/icons8-checked_user_female.png" />
                </image>
             </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton fx:id="btnMaximizar" contentDisplay="CENTER" layoutX="961.0" onMouseClicked="#maximizar" prefHeight="30.0" prefWidth="37.0" text=" " textFill="#1f7950" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/maximize.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton fx:id="btnCerrar" contentDisplay="CENTER" layoutX="920.0" onMouseClicked="#cerrar" text=" " textFill="#c94343" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/close.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton text=" " AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="915.0" />
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="229.0" layoutY="191.0" prefHeight="121.0" prefWidth="217.0" style="-fx-background-color: #FEFDFD;" text=" " AnchorPane.leftAnchor="240.0" />
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="495.0" layoutY="191.0" prefHeight="121.0" prefWidth="217.0" style="-fx-background-color: #FEFDFD;" text=" " AnchorPane.leftAnchor="507.0" AnchorPane.rightAnchor="300.0" />
-      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="764.0" layoutY="192.0" prefHeight="121.0" prefWidth="217.0" style="-fx-background-color: #FEFDFD;" text=" " AnchorPane.rightAnchor="40.0" />
-      <JFXButton layoutX="346.0" layoutY="27.0" prefHeight="141.0" prefWidth="536.0" text=" " AnchorPane.leftAnchor="346.0" AnchorPane.rightAnchor="142.0">
-         <graphic>
-            <ImageView fitHeight="123.0" fitWidth="643.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/logo.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
+            <JFXButton fx:id="btnPrincipal" buttonType="RAISED" layoutX="7.0" layoutY="184.0" onMouseClicked="#principal" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Principal" textFill="#f8f8f8" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="0.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton fx:id="btnProductos" buttonType="RAISED" layoutX="7.0" layoutY="285.0" onMouseClicked="#productos" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Productos" textFill="#f8f8f8" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="0.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/pildora.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton fx:id="btnInventario" buttonType="RAISED" layoutX="4.0" layoutY="387.0" onMouseClicked="#inventario" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Inventario" textFill="#f8f8f8">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/inventario.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton fx:id="btnReportes" buttonType="RAISED" layoutX="7.0" layoutY="487.0" onMouseClicked="#reportes" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Reportes" textFill="#f8f8f8">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/reporte.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton fx:id="btnMantenimiento" buttonType="RAISED" layoutX="6.0" layoutY="595.0" onMouseClicked="#mantenimiento" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Mantenimiento" textFill="#f8f8f8">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/mantenimiento.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="203.0" layoutY="45.0" prefHeight="688.0" prefWidth="830.0" AnchorPane.bottomAnchor="-13.0" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+         <children>
+            <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="305.0" layoutY="252.0" prefHeight="121.0" prefWidth="217.0" style="-fx-background-color: #FEFDFD;" text=" " AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" />
+            <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="575.0" layoutY="255.0" prefHeight="121.0" prefWidth="217.0" style="-fx-background-color: #FEFDFD;" text=" " AnchorPane.rightAnchor="37.0" />
+            <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="13.0" layoutY="254.0" prefHeight="121.0" prefWidth="217.0" style="-fx-background-color: #FEFDFD;" text=" " />
+            <JFXButton layoutX="154.0" prefHeight="141.0" prefWidth="533.0" text=" " AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fitHeight="123.0" fitWidth="643.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/logo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
     
    </children>
 </AnchorPane>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="688.0" prefWidth="830.0" style="-fx-background-color: #AF2323;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="305.0" layoutY="252.0" prefHeight="121.0" prefWidth="217.0" style="-fx-background-color: #FEFDFD;" text=" " AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" />
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="575.0" layoutY="255.0" prefHeight="121.0" prefWidth="217.0" style="-fx-background-color: #FEFDFD;" text=" " AnchorPane.rightAnchor="37.0" />
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="13.0" layoutY="254.0" prefHeight="121.0" prefWidth="217.0" style="-fx-background-color: #FEFDFD;" text=" " />
+      <JFXButton layoutX="154.0" prefHeight="141.0" prefWidth="533.0" text=" " AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="0.0">
+         <graphic>
+            <ImageView fitHeight="123.0" fitWidth="643.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/logo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>
