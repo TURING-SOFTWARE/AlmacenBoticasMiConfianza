@@ -79,6 +79,9 @@ public class LoginController implements Initializable {
                 preparedStatement.setString(2, pass);
                 resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
+
+
+
 //                    Alert dialogoAlerta = new Alert(Alert.AlertType.INFORMATION);
 //                    dialogoAlerta.setTitle("Iniciar Sesión");
 //                    dialogoAlerta.setContentText("Usuario y Contraseña correctos");
@@ -89,8 +92,8 @@ public class LoginController implements Initializable {
                     Stage stage = (Stage) node.getScene().getWindow();
                     stage.close();
                     Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/main.fxml")));
-                    
-        
+
+
                     scene.setOnMousePressed(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {

@@ -67,11 +67,11 @@ public class RecuperacionController implements Initializable {
                 preparedStatement.setString(1, val);
                 resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-                    Alert dialogoAlerta = new Alert(Alert.AlertType.INFORMATION);
-                    dialogoAlerta.setTitle("Recuperacion");
-                    dialogoAlerta.setContentText("Su usuario es:admin" + "y su contraseña:admin");
-                    dialogoAlerta.initStyle(StageStyle.UTILITY);
-                    dialogoAlerta.showAndWait();
+//                    Alert dialogoAlerta = new Alert(Alert.AlertType.INFORMATION);
+//                    dialogoAlerta.setTitle("Recuperacion");
+//                    dialogoAlerta.setContentText("Su usuario es:admin" + "y su contraseña:admin");
+//                    dialogoAlerta.initStyle(StageStyle.UTILITY);
+//                    dialogoAlerta.showAndWait();
 
                     Node node = (Node) event.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();

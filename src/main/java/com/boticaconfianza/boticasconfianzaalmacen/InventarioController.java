@@ -26,4 +26,3 @@ public class InventarioController implements Initializable {
     
 }
 
-// inventario GAAAAAAAAA
