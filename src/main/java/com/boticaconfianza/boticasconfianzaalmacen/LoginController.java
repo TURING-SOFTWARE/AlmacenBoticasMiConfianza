@@ -2,8 +2,6 @@ package com.boticaconfianza.boticasconfianzaalmacen;
 
 import Conection.ConexionBD;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -14,8 +12,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -28,9 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -46,11 +40,6 @@ public class LoginController implements Initializable {
     Connection con = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
-    
-    
-    @FXML
-    private StackPane stackpane;
-    
     @FXML
     private Label lblErrors;
 
@@ -90,32 +79,19 @@ public class LoginController implements Initializable {
                 preparedStatement.setString(2, pass);
                 resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
+//                    Alert dialogoAlerta = new Alert(Alert.AlertType.INFORMATION);
+//                    dialogoAlerta.setTitle("Iniciar Sesión");
+//                    dialogoAlerta.setContentText("Usuario y Contraseña correctos");
+//                    dialogoAlerta.initStyle(StageStyle.UTILITY);
+//                    dialogoAlerta.showAndWait();
                     
-                    JFXDialogLayout dialogLayout = new JFXDialogLayout();
-                   
-                    JFXButton button = new JFXButton("Aceptar");
-                    button.setStyle("-fx-background-color: #27A752");
-                    button.setButtonType(JFXButton.ButtonType.FLAT);
-                    dialogLayout.setHeading(new Text("Bienvenido al Sistema"));
-                    
-                    String content="Usuario y Cotraseña Correctos";
-                       dialogLayout.setBody(new Text(content));
-                    JFXDialog dialog = new JFXDialog(stackpane,dialogLayout, JFXDialog.DialogTransition.CENTER);
-                    
-                    dialogLayout.setStyle("-fx-background-color: #91F587");
-                    dialogLayout.setStyle("-fx-border-color: blue");
-                   
-                    
-                    button.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent eventi)->{
-                        dialog.close();
-                        
-                        Node node = (Node) event.getSource();
+                    Node node = (Node) event.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
                     stage.close();
-                        try {
-                            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/main.fxml")));
-                            
-                             scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/main.fxml")));
+                    
+        
+                    scene.setOnMousePressed(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
                             xOffset = event.getSceneX();
@@ -133,30 +109,8 @@ public class LoginController implements Initializable {
                     
                     
                     stage.setScene(scene);
-                    stage.setMaximized(false);
+                    stage.setFullScreen(true);
                     stage.show();
-                        } catch (IOException ex) {
-                            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        
-                        
-                        
-                            });
-
-                 
-                    dialogLayout.setActions(button);
-                    dialog.show();
-                    
-//                    Alert dialogoAlerta = new Alert(Alert.AlertType.INFORMATION);
-//                    dialogoAlerta.setTitle("Iniciar Sesión");
-//                    dialogoAlerta.setContentText("Usuario y Contraseña correctos");
-//                    dialogoAlerta.initStyle(StageStyle.UTILITY);
-//                    dialogoAlerta.showAndWait();
-                    
-                    
-                    
-        
-                   
                      
                      
                      
@@ -203,12 +157,12 @@ public class LoginController implements Initializable {
                 preparedStatement.setString(2, pass);
                 resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-                    /*Alert dialogoAlerta = new Alert(Alert.AlertType.INFORMATION);
+                    Alert dialogoAlerta = new Alert(Alert.AlertType.INFORMATION);
                     dialogoAlerta.setTitle("Iniciar Sesión");
                     dialogoAlerta.setContentText("Usuario y Contraseña correctos");
                     dialogoAlerta.initStyle(StageStyle.UTILITY);
                     dialogoAlerta.showAndWait();
-                    */
+                    
                     Node node = (Node) event.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
                     stage.close();

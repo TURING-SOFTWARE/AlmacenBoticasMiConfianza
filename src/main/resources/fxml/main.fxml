@@ -94,7 +94,7 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="196.0" prefHeight="47.0" prefWidth="829.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="-1.0">
+      <AnchorPane layoutX="196.0" prefHeight="47.0" prefWidth="829.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="-1.0">
          <children>
             <JFXButton fx:id="btniMinimize" contentDisplay="CENTER" onMouseClicked="#minimizar" text=" " textFill="#cfc51f" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="0.0">
                <graphic>
