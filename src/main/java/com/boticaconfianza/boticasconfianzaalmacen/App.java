@@ -1,5 +1,6 @@
 package com.boticaconfianza.boticasconfianzaalmacen;
 
+import entidades.acciones;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,25 +14,27 @@ import java.io.IOException;
 public class App extends Application {
     private double xOffset = 0;
     private double yOffset = 0;
-
+    entidades.acciones acciones = new acciones();
     @Override
     public void start(Stage stage) throws IOException {
          Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
         stage.initStyle(StageStyle.UNDECORATED);
          stage.setMaximized(false);
 
-        root.setOnMousePressed(event -> {
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
-        });
+//        root.setOnMousePressed(event -> {
+//            xOffset = event.getSceneX();
+//            yOffset = event.getSceneY();
+//        });
+//
+//        root.setOnMouseDragged(event -> {
+//            stage.setX(event.getScreenX() - xOffset);
+//            stage.setY(event.getScreenY() - yOffset);
+//        });
 
-        root.setOnMouseDragged(event -> {
-            stage.setX(event.getScreenX() - xOffset);
-            stage.setY(event.getScreenY() - yOffset);
-        });
 
 
         Scene scene = new Scene(root, 343, 435);
+        acciones.Mover(scene,stage);
         stage.setScene(scene);
         stage.show();
         
