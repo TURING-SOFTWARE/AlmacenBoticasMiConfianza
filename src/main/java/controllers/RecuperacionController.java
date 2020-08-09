@@ -1,20 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.boticaconfianza.boticasconfianzaalmacen;
+
+package controllers;
 
 import Conection.ConexionBD;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,12 +11,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 /**
  * FXML Controller class
@@ -73,6 +68,9 @@ public class RecuperacionController implements Initializable {
 //                    dialogoAlerta.initStyle(StageStyle.UTILITY);
 //                    dialogoAlerta.showAndWait();
 
+
+
+
                     Node node = (Node) event.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
                     stage.close();
@@ -111,20 +109,14 @@ public class RecuperacionController implements Initializable {
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/login.fxml")));
-        scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            xOffset = event.getSceneX();
-                            yOffset = event.getSceneY();
-                        }
-                    });
+        scene.setOnMousePressed(event12 -> {
+            xOffset = event12.getSceneX();
+            yOffset = event12.getSceneY();
+        });
 
-                    scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            stage.setX(event.getScreenX() - xOffset);
-                            stage.setY(event.getScreenY() - yOffset);
-                        }
+                    scene.setOnMouseDragged(event1 -> {
+                        stage.setX(event1.getScreenX() - xOffset);
+                        stage.setY(event1.getScreenY() - yOffset);
                     });
         stage.setScene(scene);
         stage.show();
@@ -142,7 +134,6 @@ public class RecuperacionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }
 
 }

@@ -3,28 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.boticaconfianza.boticasconfianzaalmacen;
+package controllers;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import metodos.acciones;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -32,8 +24,9 @@ import javafx.stage.Stage;
  * @author palmachris7
  */
 public class MainController implements Initializable {
-
-
+    metodos.acciones acciones = new acciones();
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     @FXML
     private AnchorPane myPane;
@@ -54,7 +47,6 @@ public class MainController implements Initializable {
 
     @FXML
     private AnchorPane panel_mantenimiento;
-
 
     @FXML
     private JFXButton btniMinimize;
@@ -89,11 +81,8 @@ public class MainController implements Initializable {
     }
     
     Stage stage = null;
-
     @FXML
     void maximizar(MouseEvent event) {
-        
-        
        stage = (Stage) myPane.getScene().getWindow();
        if(stage.isMaximized())
            stage.setMaximized(false);
@@ -115,11 +104,18 @@ public class MainController implements Initializable {
     ///Menus
     @FXML
     void principal(MouseEvent event) {
-        panel_home.toFront();
+       panel_home.toFront();
+
     }
+
     @FXML
-    void productos(MouseEvent event) {
-        panel_productos.toFront();
+    void productos(MouseEvent event) throws IOException {
+
+        acciones.Nuevaventana("products");
+
+
+
+
     }
 
     @FXML
@@ -137,15 +133,16 @@ public class MainController implements Initializable {
    }
 
 
-//    private void loadpage(String page){
-//        Parent root=null;
-//        try {
-//            root = FXMLLoader.load(getClass().getResource(page+".fxml"));
-//        } catch (IOException ex) {
-//            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//           bp.setCenter(root);
-//    }
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

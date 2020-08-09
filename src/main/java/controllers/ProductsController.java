@@ -3,25 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.boticaconfianza.boticasconfianzaalmacen;
+package controllers;
+
+import javafx.fxml.Initializable;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
 
 /**
  * FXML Controller class
  *
  * @author palmachris7
  */
-public class InventarioController implements Initializable {
+public class ProductsController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
     }    
     
 }
