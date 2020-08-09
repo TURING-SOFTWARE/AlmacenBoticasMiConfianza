@@ -213,6 +213,8 @@ public class LoginController implements Initializable {
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/recuperacion.fxml")));
 
         Mover(scene,stage);
+        stage.setScene(scene);
+        stage.show();
 
     }
 

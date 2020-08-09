@@ -12,7 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import metodos.acciones;
+import entidades.acciones;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
  * @author palmachris7
  */
 public class MainController implements Initializable {
-    metodos.acciones acciones = new acciones();
+    entidades.acciones acciones = new acciones();
     private double xOffset = 0;
     private double yOffset = 0;
 

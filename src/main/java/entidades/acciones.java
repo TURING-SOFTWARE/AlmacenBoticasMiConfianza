@@ -1,4 +1,4 @@
-package metodos;
+package entidades;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,14 +24,9 @@ public class acciones {
             stage.setY(event12.getScreenY() - yOffset);
         });
 
-        stage.setScene(scene);
-
-        stage.show();
-
-
-
-
     }
+
+
 
 
     public void Nuevaventana(String string){
@@ -44,6 +39,9 @@ public class acciones {
             stage.setScene(new Scene(ventana));
             stage.initStyle(StageStyle.UNDECORATED);
             Mover(ventana.getScene(), stage);
+
+            stage.setScene(ventana.getScene());
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
