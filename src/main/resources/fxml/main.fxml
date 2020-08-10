@@ -8,9 +8,9 @@
 
 <AnchorPane fx:id="myPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="722.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
    <children>
-      <AnchorPane layoutX="192.0" layoutY="36.0" prefHeight="686.0" prefWidth="830.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="36.0">
+      <AnchorPane fx:id="root_pane" layoutX="192.0" layoutY="21.0" prefHeight="701.0" prefWidth="830.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="21.0">
          <children>
-            <AnchorPane fx:id="panel_inventario" prefHeight="686.0" prefWidth="829.0" style="-fx-background-color: #FF0000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane fx:id="panel_inventario" prefHeight="686.0" prefWidth="829.0" style="-fx-background-color: #ff0000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <AnchorPane fx:id="panel_mantenimiento" layoutX="10.0" layoutY="10.0" prefHeight="686.0" prefWidth="829.0" style="-fx-background-color: #FF0000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <AnchorPane fx:id="panel_productos" prefHeight="686.0" prefWidth="829.0" style="-fx-background-color: #7E3222;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -94,7 +94,7 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="196.0" prefHeight="47.0" prefWidth="829.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="-1.0">
+      <AnchorPane layoutX="196.0" prefHeight="15.0" prefWidth="830.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="-1.0">
          <children>
             <JFXButton fx:id="btniMinimize" contentDisplay="CENTER" onMouseClicked="#minimizar" text=" " textFill="#cfc51f" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="0.0">
                <graphic>

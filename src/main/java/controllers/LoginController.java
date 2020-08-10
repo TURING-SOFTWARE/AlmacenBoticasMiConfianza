@@ -109,7 +109,7 @@ public class LoginController implements Initializable {
                         Stage stage = (Stage) node.getScene().getWindow();
                         stage.close();
                         try {
-                            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/main.fxml")));
+                            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/main2.fxml")));
 
                             scene.setOnMousePressed(new EventHandler<MouseEvent>() {
                                 @Override

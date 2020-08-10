@@ -1,6 +1,6 @@
 package com.boticaconfianza.boticasconfianzaalmacen;
 
-import entidades.acciones;
+import metodos.acciones;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +14,7 @@ import java.io.IOException;
 public class App extends Application {
     private double xOffset = 0;
     private double yOffset = 0;
-    entidades.acciones acciones = new acciones();
+    metodos.acciones acciones = new acciones();
     @Override
     public void start(Stage stage) throws IOException {
          Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));

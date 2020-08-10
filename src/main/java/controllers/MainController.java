@@ -7,12 +7,13 @@ package controllers;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import entidades.acciones;
+import metodos.acciones;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,7 +25,7 @@ import java.util.ResourceBundle;
  * @author palmachris7
  */
 public class MainController implements Initializable {
-    entidades.acciones acciones = new acciones();
+    metodos.acciones acciones = new acciones();
     private double xOffset = 0;
     private double yOffset = 0;
 
@@ -32,6 +33,8 @@ public class MainController implements Initializable {
     private AnchorPane myPane;
 
 
+    @FXML
+    private AnchorPane root_pane;
     @FXML
     private AnchorPane panel_home;
 
@@ -103,18 +106,20 @@ public class MainController implements Initializable {
 
     ///Menus
     @FXML
-    void principal(MouseEvent event) {
-       panel_home.toFront();
+    void principal(MouseEvent event) throws IOException {
+        root_pane.getChildren().clear();
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        root_pane.getChildren().setAll(pane);
 
     }
 
     @FXML
     void productos(MouseEvent event) throws IOException {
 
-        acciones.Nuevaventana("products");
-
-
-
+        root_pane.getChildren().clear();
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/products.fxml"));
+        root_pane.getChildren().setAll(pane);
 
     }
 

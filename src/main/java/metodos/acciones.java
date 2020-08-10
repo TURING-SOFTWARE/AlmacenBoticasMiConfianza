@@ -1,8 +1,9 @@
-package entidades;
+package metodos;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -41,6 +42,7 @@ public class acciones {
             Mover(ventana.getScene(), stage);
 
             stage.setScene(ventana.getScene());
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
