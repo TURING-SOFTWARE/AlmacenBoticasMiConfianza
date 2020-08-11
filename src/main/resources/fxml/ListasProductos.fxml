@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="518.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListaProductosController">
+   <children>
+      <ScrollPane layoutX="57.0" layoutY="42.0" prefHeight="410.0" prefWidth="709.0">
+         <content>
+            <TableView fx:id="tblViewProductos" editable="true" prefHeight="502.0" prefWidth="920.0">
+              <columns>
+                <TableColumn fx:id="clmId" prefWidth="75.0" text="Id" />
+                <TableColumn fx:id="clmProductoNombre" prefWidth="75.0" text="Nombre" />
+                  <TableColumn fx:id="clmLaboratorio" prefWidth="75.0" text="Laboratorio" />
+                  <TableColumn fx:id="clmLote" prefWidth="75.0" text="Lote" />
+                  <TableColumn fx:id="clmPresentacion" prefWidth="82.30874633789062" text="Presentacion" />
+                  <TableColumn fx:id="clmTipo" prefWidth="67.69122314453125" text="Tipo" />
+                  <TableColumn fx:id="clmFecha_vencimiento" prefWidth="86.69400024414062" text="Vencimiento" />
+                  <TableColumn fx:id="clmEstado_producto" minWidth="0.0" prefWidth="0.0" text="Estado" />
+                  <TableColumn fx:id="clmInfo_producto" prefWidth="191.0" text="Informacion" />
+                  <TableColumn fx:id="clmPrecio_unid" prefWidth="102.926025390625" text="Precio/Unidad" />
+                  <TableColumn fx:id="clmPrecio_caja" prefWidth="94.5" text="Precio/Caja" />
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
