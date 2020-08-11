@@ -4,7 +4,8 @@ module com.boticaconfianza.boticasconfianzaalmacen {
     requires java.base;
     requires java.sql;
     requires com.jfoenix;
-
+    exports entidades;
+    opens entidades to javafx.base;
 
 
     opens controllers to javafx.fxml;

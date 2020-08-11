@@ -13,7 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import metodos.acciones;
+import metodos.Acciones;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
  * @author palmachris7
  */
 public class MainController implements Initializable {
-    metodos.acciones acciones = new acciones();
+    Acciones acciones = new Acciones();
     private double xOffset = 0;
     private double yOffset = 0;
 
@@ -62,7 +62,7 @@ public class MainController implements Initializable {
     
     @FXML
     private JFXButton btnPrincipal;
-
+    
     @FXML
     private JFXButton btnProductos;
 
@@ -118,7 +118,7 @@ public class MainController implements Initializable {
     void productos(MouseEvent event) throws IOException {
 
         root_pane.getChildren().clear();
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/products.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ListasProductos.fxml"));
         root_pane.getChildren().setAll(pane);
 
     }

@@ -9,7 +9,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class acciones {
+public class Acciones {
     private double xOffset = 0;
     private double yOffset = 0;
 

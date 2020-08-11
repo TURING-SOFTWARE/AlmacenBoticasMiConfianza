@@ -37,7 +37,7 @@ public class LoginController implements Initializable {
 
     private double xOffset = 0;
     private double yOffset = 0;
-    Connection con;
+    Connection connection;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
 
@@ -79,7 +79,7 @@ public class LoginController implements Initializable {
         } else {
             String sql = "SELECT * FROM usuarios Where username = ? and contrasena = ?";
             try {
-                preparedStatement = con.prepareStatement(sql);
+                preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, user);
                 preparedStatement.setString(2, pass);
                 resultSet = preparedStatement.executeQuery();
@@ -177,7 +177,7 @@ public class LoginController implements Initializable {
         } else {
             String sql = "SELECT * FROM usuarios Where username = ? and contrasena = ?";
             try {
-                preparedStatement = con.prepareStatement(sql);
+                preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, user);
                 preparedStatement.setString(2, pass);
                 resultSet = preparedStatement.executeQuery();
@@ -240,7 +240,7 @@ public class LoginController implements Initializable {
     }
 
     public LoginController() {
-        con = ConexionBD.conDB();
+        connection = ConexionBD.conDB();
     }
 
     private void setLblError(Color color, String text) {
