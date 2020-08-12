@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="435.0" prefWidth="343.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RecuperacionController">
     <stylesheets>
-        <URL value="@/styles/recuperacion.css" />
+        <URL value="@/styles/Recuperacion.css" />
     </stylesheets>
    <children>
       <FontAwesomeIcon fill="#3646ca" iconName="KEY" layoutX="133.0" layoutY="133.0" size="6em" />
