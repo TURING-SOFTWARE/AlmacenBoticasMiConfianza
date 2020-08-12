@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -19,7 +20,6 @@ import metodos.Acciones;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.scene.Parent;
 
 /**
  * FXML Controller class
@@ -109,36 +109,28 @@ public class MainController implements Initializable {
     ///Menus
     @FXML
     void principal(MouseEvent event) throws IOException {
-        /*Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Main.fxml")));
-
-        acciones.Mover(scene,stage);
-        stage.setScene(scene);
-        stage.show();*/
-           Parent view2 = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
-
-        Scene scene2 = new Scene(view2);
-
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene2);
-        window.show();
-
+//        Node node = (Node) event.getSource();
+//        Stage stage = (Stage) node.getScene().getWindow();
+//        stage.close();
+//        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Main.fxml")));
+//
+//        acciones.Mover(scene,stage);
+//        stage.setScene(scene);
+//        stage.show();
 
     }
 
     @FXML
     void productos(MouseEvent event) throws IOException {
-       /* Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Productos.fxml")));
-
-        acciones.Mover(scene,stage);
-        stage.setScene(scene);
-        stage.show();*/
-       Parent view2 = FXMLLoader.load(getClass().getResource("/fxml/Productos.fxml"));
+//        Node node = (Node) event.getSource();
+//        Stage stage = (Stage) node.getScene().getWindow();
+//        stage.close();
+//        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Productos.fxml")));
+//
+//        acciones.Mover(scene,stage);
+//        stage.setScene(scene);
+//        stage.show();
+        Parent view2 = FXMLLoader.load(getClass().getResource("/fxml/Productos.fxml"));
 
         Scene scene2 = new Scene(view2);
 
@@ -151,7 +143,7 @@ public class MainController implements Initializable {
 
     @FXML
     void inventario(MouseEvent event) {
-
+            acciones.Nuevaventana("Login");
     }
 
     @FXML

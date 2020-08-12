@@ -11,11 +11,11 @@
 
 <AnchorPane fx:id="myPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1356.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductosController">
    <children>
-      <AnchorPane fx:id="root_pane" layoutX="192.0" layoutY="21.0" prefHeight="699.0" prefWidth="1327.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="21.0">
+      <AnchorPane fx:id="root_pane" layoutX="192.0" layoutY="21.0" prefHeight="699.0" prefWidth="1327.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="21.0">
          <children>
-            <AnchorPane prefHeight="668.0" prefWidth="1142.0" style="-fx-background-color: #FFFF;" stylesheets="@../styles/ListaProductos.css" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="5.0">
+            <AnchorPane prefHeight="668.0" prefWidth="1142.0" style="-fx-background-color: #FFFF;" stylesheets="@../styles/ListaProductos.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
                <children>
-                  <TableView fx:id="tblViewProductos" editable="true" layoutX="13.0" layoutY="110.0" stylesheets="@../styles/ListaProductos.css" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="20.0">
+                  <TableView fx:id="tblViewProductos" editable="true" layoutX="-154.0" layoutY="128.0" stylesheets="@../styles/ListaProductos.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="40.0">
                      <columns>
                         <TableColumn fx:id="clmProductoNombre" prefWidth="75.0" text="Nombre" />
                         <TableColumn fx:id="clmLaboratorio" prefWidth="119.81053924560547" text="Laboratorio" />
@@ -38,8 +38,34 @@
                         <Image url="@../imagenes/icons8-search.png" />
                      </image>
                   </ImageView>
-                  <JFXButton buttonType="RAISED" layoutX="494.0" layoutY="64.0" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #4472C4;" text="Buscar" textFill="#f2f2f2" AnchorPane.leftAnchor="494.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="64.0" />
-                  <JFXButton fx:id="btnNuevo" layoutX="35.0" layoutY="525.0" onAction="#Nuevo" prefHeight="41.0" prefWidth="115.0" ripplerFill="#1fb911" style="-fx-background-color: GREEN;" text="Nuevo" />
+                  <JFXButton buttonType="RAISED" layoutX="494.0" layoutY="64.0" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #4472C4;" text="Buscar" textFill="#f2f2f2" AnchorPane.leftAnchor="494.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="64.0" />
+                  <JFXButton fx:id="btnNuevo" buttonType="RAISED" layoutX="34.0" layoutY="557.0" onAction="#Nuevo" onMouseClicked="#nuevo" prefHeight="34.0" prefWidth="143.0" style="-fx-background-color: #71ED25;" text="Nuevo" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="984.0">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/icons8-add_new.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="207.0" layoutY="557.0" prefHeight="37.0" prefWidth="136.0" style="-fx-background-color: #EDB625;" text="Editar">
+                     <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/icons8-edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="372.0" layoutY="557.0" prefHeight="38.0" prefWidth="147.0" style="-fx-background-color: #ED5525;" text="Eliminar">
+                     <graphic>
+                        <ImageView fitHeight="21.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/icons8-trash.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
                </children>
             </AnchorPane>
          </children>

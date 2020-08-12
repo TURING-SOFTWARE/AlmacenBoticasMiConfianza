@@ -2,39 +2,44 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.net.URL?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="controllers.FrmMedicamentosController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FrmMedicamentosController">
     <stylesheets>
         <URL value="@/styles/frmmedicamentos.css" />
     </stylesheets>
    <children>
       <Pane prefHeight="400.0" prefWidth="110.0" style="-fx-background-color: #0971F7;" />
-      <JFXTextField layoutX="136.0" layoutY="84.0" prefHeight="25.0" prefWidth="198.0" promptText="Nombre del medicamento" />
+      <JFXTextField fx:id="nombreProducto" labelFloat="true" layoutX="136.0" layoutY="84.0" prefHeight="25.0" prefWidth="198.0" promptText="Nombre del medicamento" />
       <Label layoutX="128.0" layoutY="20.0" text="Registro de Medicamento" textFill="#3c57b9">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="136.0" layoutY="290.0" prefHeight="25.0" prefWidth="181.0" promptText="n° Lote" />
-      <JFXTextField layoutX="442.0" layoutY="137.0" prefHeight="25.0" prefWidth="181.0" promptText="Precio Unidad" />
-      <JFXTextField layoutX="437.0" layoutY="188.0" prefHeight="25.0" prefWidth="181.0" promptText="Precio Caja" />
-      <JFXComboBox layoutX="136.0" layoutY="137.0" prefHeight="25.0" prefWidth="168.0" promptText="Laboratorio" />
-      <JFXComboBox layoutX="136.0" layoutY="188.0" prefHeight="25.0" prefWidth="168.0" promptText="Presentación" />
-      <JFXComboBox layoutX="136.0" layoutY="236.0" prefHeight="25.0" prefWidth="168.0" promptText="Tipo" />
-      <JFXDatePicker layoutX="437.0" layoutY="83.0" promptText="Fecha de vencimiento" />
-      <JFXTextArea layoutX="442.0" layoutY="248.0" prefHeight="82.0" prefWidth="181.0" promptText="Información del producto" />
+      <JFXTextField fx:id="loteProducto" labelFloat="true" layoutX="136.0" layoutY="290.0" prefHeight="25.0" prefWidth="181.0" promptText="n° Lote" />
+      <JFXTextField fx:id="precioUnidad" labelFloat="true" layoutX="436.0" layoutY="137.0" prefHeight="25.0" prefWidth="181.0" promptText="Precio Unidad" />
+      <JFXTextField fx:id="precioCaja" labelFloat="true" layoutX="437.0" layoutY="188.0" prefHeight="25.0" prefWidth="181.0" promptText="Precio Caja" />
+      <JFXComboBox fx:id="laboratorioProducto" labelFloat="true" layoutX="136.0" layoutY="137.0" prefHeight="25.0" prefWidth="168.0" promptText="Laboratorio" />
+      <JFXComboBox fx:id="presentacionProducto" labelFloat="true" layoutX="136.0" layoutY="188.0" prefHeight="25.0" prefWidth="168.0" promptText="Presentación" />
+      <JFXComboBox fx:id="tipoProducto" labelFloat="true" layoutX="136.0" layoutY="236.0" prefHeight="25.0" prefWidth="168.0" promptText="Tipo" />
+      <JFXTextArea fx:id="infoProducto" labelFloat="true" layoutX="437.0" layoutY="248.0" prefHeight="82.0" prefWidth="181.0" promptText="Información del producto" />
       <Label layoutX="136.0" layoutY="333.0" prefHeight="17.0" prefWidth="47.0" text="Estado:" />
-      <JFXRadioButton layoutX="136.0" layoutY="358.0" text="Activo" />
-      <JFXRadioButton layoutX="227.0" layoutY="358.0" text="Inactivo" />
-      <JFXButton layoutX="442.0" layoutY="354.0" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #34B966;" text="Agregar" />
+      <JFXRadioButton fx:id="rdbtnActivo" layoutX="136.0" layoutY="358.0" text="Activo">
+         <toggleGroup>
+            <ToggleGroup fx:id="Estado" />
+         </toggleGroup></JFXRadioButton>
+      <JFXRadioButton fx:id="rdbtnInacnt" layoutX="227.0" layoutY="358.0" text="Inactivo" toggleGroup="$Estado" />
+      <JFXButton fx:id="btnAgregar" buttonType="RAISED" layoutX="435.0" layoutY="354.0" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: #34B966;" text="Agregar" />
+      <DatePicker fx:id="datePicker" layoutX="434.0" layoutY="85.0" promptText="Fecha de Vencimiento" stylesheets="@../styles/frmmedicamentos.css" />
+      <JFXButton fx:id="btnCancelar" buttonType="RAISED" layoutX="554.0" layoutY="353.0" onAction="#Cancelar" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: #F9F5F4; -fx-border-color: #34B966 #34B966;" text="Cancelar" />
    </children>
 </AnchorPane>

@@ -196,7 +196,10 @@ public class ProductosController implements Initializable {
     void Nuevo(ActionEvent event) {
 
     }
-    
+    @FXML
+    void nuevo(MouseEvent event) {
+        acciones.Nuevaventana("FrmMedicamentos");
+    }
     
     @FXML
     void inventario(MouseEvent event) {
@@ -217,7 +220,13 @@ public class ProductosController implements Initializable {
 
 
 
+    @FXML
+    private void deleteButton() {
 
+        String query = "delete from products where id_producto="+ clmId.getId()+"";
+        ConexionBD.executeQuery(query);
+        showProducts();
+    }
 
 
 

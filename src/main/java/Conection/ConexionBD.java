@@ -22,7 +22,7 @@ public class ConexionBD {
         }
     }
 
-    public void executeQuery(String query) {
+    public static void executeQuery(String query) {
         Connection conn =getConnection() ;
         Statement st;
         try {

@@ -2,6 +2,17 @@
  * Empty Stylesheet file.
  */
 
-.mainFxmlClass {
+.date-picker:editable > .arrow-button > * {
+
+}
+
+.date-picker{
+-fx-alternative-column-fill-visible: true;
+
+}
+
+.date-picker .arrow-button{
+    -fx-background-color:  #0971F7;
+
 
 }
