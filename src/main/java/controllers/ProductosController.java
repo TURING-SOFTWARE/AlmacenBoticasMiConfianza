@@ -29,6 +29,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.scene.Parent;
 
 public class ProductosController implements Initializable {
 
@@ -82,6 +84,10 @@ public class ProductosController implements Initializable {
 
     @FXML
     private JFXButton btnMantenimiento;
+    
+    
+    @FXML
+    private JFXButton btnNuevo;
 
     @FXML
     public TableColumn<Producto,Integer>clmId;
@@ -152,31 +158,46 @@ public class ProductosController implements Initializable {
     ///Menus
     @FXML
     void principal(MouseEvent event) throws IOException {
-        Node node = (Node) event.getSource();
+        /*Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Main.fxml")));
 
         //Mover(scene,stage);
         stage.setScene(scene);
-        stage.show();
+        stage.show();*/
+        
+        Parent view2 = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
+
+        Scene scene2 = new Scene(view2);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene2);
+        window.show();
+
     }
 
     @FXML
     void productos(MouseEvent event) throws IOException {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Productos.fxml")));
+        Parent view2 = FXMLLoader.load(getClass().getResource("/fxml/Productos.fxml"));
 
+        Scene scene2 = new Scene(view2);
 
-        stage.setScene(scene);
-        stage.show();
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene2);
+        window.show();
+
 
 
 
     }
 
+    @FXML
+    void Nuevo(ActionEvent event) {
+
+    }
+    
+    
     @FXML
     void inventario(MouseEvent event) {
 

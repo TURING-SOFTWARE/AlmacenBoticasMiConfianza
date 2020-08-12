@@ -19,6 +19,7 @@ import metodos.Acciones;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.Parent;
 
 /**
  * FXML Controller class
@@ -108,27 +109,42 @@ public class MainController implements Initializable {
     ///Menus
     @FXML
     void principal(MouseEvent event) throws IOException {
-        Node node = (Node) event.getSource();
+        /*Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Main.fxml")));
 
-        //Mover(scene,stage);
+        acciones.Mover(scene,stage);
         stage.setScene(scene);
-        stage.show();
+        stage.show();*/
+           Parent view2 = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
+
+        Scene scene2 = new Scene(view2);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene2);
+        window.show();
+
 
     }
 
     @FXML
     void productos(MouseEvent event) throws IOException {
-        Node node = (Node) event.getSource();
+       /* Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Productos.fxml")));
 
-        //Mover(scene,stage);
+        acciones.Mover(scene,stage);
         stage.setScene(scene);
-        stage.show();
+        stage.show();*/
+       Parent view2 = FXMLLoader.load(getClass().getResource("/fxml/Productos.fxml"));
+
+        Scene scene2 = new Scene(view2);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene2);
+        window.show();
 
 
     }
