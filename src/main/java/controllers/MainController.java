@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -107,34 +108,43 @@ public class MainController implements Initializable {
     ///Menus
     @FXML
     void principal(MouseEvent event) throws IOException {
-        root_pane.getChildren().clear();
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Main.fxml")));
 
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
-        root_pane.getChildren().setAll(pane);
+        //Mover(scene,stage);
+        stage.setScene(scene);
+        stage.show();
 
     }
 
     @FXML
     void productos(MouseEvent event) throws IOException {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Productos.fxml")));
 
-        root_pane.getChildren().clear();
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ListasProductos.fxml"));
-        root_pane.getChildren().setAll(pane);
+        //Mover(scene,stage);
+        stage.setScene(scene);
+        stage.show();
+
 
     }
 
     @FXML
     void inventario(MouseEvent event) {
-        panel_inventario.toFront();
+
     }
 
     @FXML
     void reportes(MouseEvent event) {
-        panel_reportes.toFront();
+
     }
     @FXML
     void mantenimiento(MouseEvent event) {
-        panel_mantenimiento.toFront();
+
    }
 
 
@@ -151,7 +161,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
     }
 
 }

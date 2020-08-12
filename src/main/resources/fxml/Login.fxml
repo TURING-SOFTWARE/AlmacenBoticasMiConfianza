@@ -16,7 +16,7 @@
 
 <AnchorPane id="AnchorPane" onKeyPressed="#presionar" prefHeight="435.0" prefWidth="343.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <stylesheets>
-      <URL value="@/styles/login.css" />
+      <URL value="@/styles/Login.css" />
    </stylesheets>
    <children>
       <StackPane fx:id="stackpane" layoutX="-6.0" prefHeight="486.0" prefWidth="202.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">

@@ -74,7 +74,7 @@ public class RecuperacionController implements Initializable {
                     Node node = (Node) event.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
                     stage.close();
-                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/login.fxml")));
+                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Login.fxml")));
                     scene.setOnMousePressed(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
@@ -108,7 +108,7 @@ public class RecuperacionController implements Initializable {
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/login.fxml")));
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Login.fxml")));
         scene.setOnMousePressed(event12 -> {
             xOffset = event12.getSceneX();
             yOffset = event12.getSceneY();

@@ -109,7 +109,7 @@ public class LoginController implements Initializable {
                         Stage stage = (Stage) node.getScene().getWindow();
                         stage.close();
                         try {
-                            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/main2.fxml")));
+                            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Main.fxml")));
 
                             scene.setOnMousePressed(new EventHandler<MouseEvent>() {
                                 @Override
@@ -186,7 +186,7 @@ public class LoginController implements Initializable {
                     Node node = (Node) event.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
                     stage.close();
-                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/main.fxml")));
+                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Main.fxml")));
                     Mover(scene,stage);
                     stage.show();
 
@@ -210,7 +210,7 @@ public class LoginController implements Initializable {
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/recuperacion.fxml")));
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Recuperacion.fxml")));
 
         Mover(scene,stage);
         stage.setScene(scene);
