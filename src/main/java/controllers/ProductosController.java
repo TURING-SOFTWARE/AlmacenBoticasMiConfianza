@@ -35,6 +35,7 @@ import javafx.scene.Parent;
 public class ProductosController implements Initializable {
 
 
+
     Acciones acciones = new Acciones();
     private double xOffset = 0;
     private double yOffset = 0;
@@ -88,6 +89,8 @@ public class ProductosController implements Initializable {
     
     @FXML
     private JFXButton btnNuevo;
+    @FXML
+    private JFXButton btnDelete;
 
     @FXML
     public TableColumn<Producto,Integer>clmId;
@@ -192,15 +195,15 @@ public class ProductosController implements Initializable {
 
     }
 
-    @FXML
-    void Nuevo(ActionEvent event) {
 
-    }
     @FXML
     void nuevo(MouseEvent event) {
         acciones.Nuevaventana("FrmMedicamentos");
+        
     }
-    
+
+
+
     @FXML
     void inventario(MouseEvent event) {
 
@@ -220,15 +223,16 @@ public class ProductosController implements Initializable {
 
 
 
-    @FXML
-    private void deleteButton() {
 
-        String query = "delete from products where id_producto="+ clmId.getId()+"";
+    
+
+    @FXML
+    void eliminar(MouseEvent event) {
+        String query = "delete from productos where id_producto=1";
         ConexionBD.executeQuery(query);
         showProducts();
+        
     }
-
-
 
    ///Tabla////
 
