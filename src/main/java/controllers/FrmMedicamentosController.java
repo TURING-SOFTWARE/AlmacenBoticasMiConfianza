@@ -99,35 +99,23 @@ public class FrmMedicamentosController implements Initializable {
     @FXML
     void agregar(MouseEvent event) {
         RadioButton selectedRadioButton = (RadioButton) Estado.getSelectedToggle();
-//        String query = "INSERT into productos" +
-//                " VALUES (null" +
-//                ",'"+nombreProducto.getText()+
-//                ",'"+presentacionProducto.getValue().toString()+
-//                ",'"+Integer.valueOf(loteProducto.getText())+
-//                ",'"+datePicker.getValue()+
-//                ",'"+infoProducto.getText()+
-//                ",'"+selectedRadioButton.getText()+
-//                ",'"+Double.valueOf(precioUnidad.getText())+
-//                ",'"+precioUnidad.getText()+
-//                ",'"+precioCaja.getText()+
-//                ",'"+tipoProducto.getValue().toString()+
-//                "2)";
-       String query="insert into productos values (null," +
-               "'233244443'," +
-               "'ddsarfdd232323fv',2,'2020-08-18','dfd2323fdf','sd232fdf',23.0,20,0,2)";
-     //   String query = "delete from productos where id_producto=11";
+       String query="insert into productos values (null,"+"'" +nombreProducto.getText()+"',"+
+               "'"+presentacionProducto.getValue().toString()+"',"
+               +Integer.parseInt(loteProducto.getText())+","+
+               "'"+datePicker.getValue()+"',"+
+               "'"+infoProducto.getText()+"',"+
+               "'"+selectedRadioButton.getText()+"',"
+               +Double.parseDouble(precioUnidad.getText())+","+
+               +Double.parseDouble(precioCaja.getText())+","+
+               "'"+tipoProducto.getValue().toString()+"',"+
+               "2)";
 
+     //   String query = "delete from productos where id_producto=11";
         ConexionBD.executeQuery(query);
 
-
-
-       //productosController.showProducts();
-        //Stage stage = (Stage) btnCancelar.getScene().getWindow();
-       // stage.close();
-
-    // System.out.println(nombreProducto.getText()+"\n"+presentacionProducto.getValue().toString()+"\n"+Integer.valueOf(loteProducto.getText())+"\n"+datePicker.getValue()+"\n"+infoProducto.getText()+"\n"+selectedRadioButton.getText()+"\n"+Double.valueOf(precioUnidad.getText())+"\n"+precioCaja.getText()+"\n"+tipoProducto.getValue().toString());
-
-
+       productosController.showProducts();
+        Stage stage = (Stage) btnCancelar.getScene().getWindow();
+       stage.close();
 
     }
 
