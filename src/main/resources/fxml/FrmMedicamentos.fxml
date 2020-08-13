@@ -38,7 +38,7 @@
             <ToggleGroup fx:id="Estado" />
          </toggleGroup></JFXRadioButton>
       <JFXRadioButton fx:id="rdbtnInacnt" layoutX="227.0" layoutY="358.0" text="Inactivo" toggleGroup="$Estado" />
-      <JFXButton fx:id="btnAgregar" buttonType="RAISED" layoutX="435.0" layoutY="354.0" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: #34B966;" text="Agregar" />
+      <JFXButton fx:id="btnAgregar" buttonType="RAISED" layoutX="435.0" layoutY="354.0" onMouseClicked="#agregar" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: #34B966;" text="Agregar" />
       <DatePicker fx:id="datePicker" layoutX="434.0" layoutY="85.0" promptText="Fecha de Vencimiento" stylesheets="@../styles/frmmedicamentos.css" />
       <JFXButton fx:id="btnCancelar" buttonType="RAISED" layoutX="554.0" layoutY="353.0" onAction="#Cancelar" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: #F9F5F4; -fx-border-color: #34B966 #34B966;" text="Cancelar" />
    </children>

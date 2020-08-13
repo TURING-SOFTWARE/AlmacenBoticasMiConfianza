@@ -32,6 +32,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 
+import static Conection.ConexionBD.getConnection;
+
 public class ProductosController implements Initializable {
 
 
@@ -199,7 +201,7 @@ public class ProductosController implements Initializable {
     @FXML
     void nuevo(MouseEvent event) {
         acciones.Nuevaventana("FrmMedicamentos");
-        
+
     }
 
 
@@ -224,21 +226,24 @@ public class ProductosController implements Initializable {
 
 
 
-    
+
 
     @FXML
     void eliminar(MouseEvent event) {
         String query = "delete from productos where id_producto=1";
         ConexionBD.executeQuery(query);
         showProducts();
-        
+
     }
+    
+    
+    
 
    ///Tabla////
 
     public ObservableList<Producto> getProductsList() {
         ObservableList<Producto> productsList = FXCollections.observableArrayList();
-        Connection connection = ConexionBD.getConnection();
+        Connection connection = getConnection();
         String query =   "Select P.id_producto, " +
                             "P.nombre_producto, " +
                            "P.tipo_producto," +
@@ -284,6 +289,9 @@ public class ProductosController implements Initializable {
         }
         return productsList;
     }
+
+
+   
 
     public void showProducts() {
         ObservableList<Producto> list = getProductsList();
