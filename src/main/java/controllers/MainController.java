@@ -109,41 +109,25 @@ public class MainController implements Initializable {
     ///Menus
     @FXML
     void principal(MouseEvent event) throws IOException {
-//        Node node = (Node) event.getSource();
-//        Stage stage = (Stage) node.getScene().getWindow();
-//        stage.close();
-//        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Main.fxml")));
-//
-//        acciones.Mover(scene,stage);
-//        stage.setScene(scene);
-//        stage.show();
 
     }
 
     @FXML
     void productos(MouseEvent event) throws IOException {
-//        Node node = (Node) event.getSource();
-//        Stage stage = (Stage) node.getScene().getWindow();
-//        stage.close();
-//        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Productos.fxml")));
+//        Parent view2 = FXMLLoader.load(getClass().getResource("/fxml/Productos.fxml"));
 //
-//        acciones.Mover(scene,stage);
-//        stage.setScene(scene);
-//        stage.show();
-        Parent view2 = FXMLLoader.load(getClass().getResource("/fxml/Productos.fxml"));
-
-        Scene scene2 = new Scene(view2);
-
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene2);
-        window.show();
-
-
+//        Scene scene2 = new Scene(view2);
+//
+//        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+//        window.setScene(scene2);
+//        acciones.Mover(scene2,window);
+//        window.show();
+         acciones.NuevaVentana(event,"Productos");
     }
 
     @FXML
     void inventario(MouseEvent event) {
-            acciones.Nuevaventana("Login");
+            acciones.NuevaventanaModal("Login");
     }
 
     @FXML

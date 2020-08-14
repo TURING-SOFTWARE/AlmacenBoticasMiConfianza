@@ -2,23 +2,30 @@
 package controllers;
 
 import java.net.URL;
+import java.security.Policy;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import Conection.ConexionBD;
 import com.jfoenix.controls.*;
+import entidades.Laboratorio;
+import entidades.Producto;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -35,7 +42,11 @@ import static Conection.ConexionBD.getConnection;
 public class FrmMedicamentosController implements Initializable {
 
     Acciones acciones = new Acciones();
-    ProductosController productosController= new ProductosController();
+    private ObservableList<Producto> data ;
+
+    public void setStudentData(ObservableList<Producto> data) {
+        this.data = data ;
+    }
     @FXML
     private JFXTextField nombreProducto;
 
@@ -59,10 +70,6 @@ public class FrmMedicamentosController implements Initializable {
 
     @FXML
     private JFXTextArea infoProducto;
-
-
-
-
 
 
     @FXML
@@ -92,9 +99,9 @@ public class FrmMedicamentosController implements Initializable {
 
     @FXML
     void Cancelar(ActionEvent event) {
-    //    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
         stage.close();
+
     }
     @FXML
     void agregar(MouseEvent event) {
@@ -110,14 +117,24 @@ public class FrmMedicamentosController implements Initializable {
                "'"+tipoProducto.getValue().toString()+"',"+
                "2)";
 
-     //   String query = "delete from productos where id_producto=11";
-        ConexionBD.executeQuery(query);
 
-       productosController.showProducts();
+
+
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
+
        stage.close();
 
+
+
     }
+
+
+
+
+
+
+
+
 
 
     @Override

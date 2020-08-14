@@ -2,10 +2,13 @@ package controllers;
 
 import Conection.ConexionBD;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import entidades.Laboratorio;
 import entidades.Producto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,10 +40,8 @@ import static Conection.ConexionBD.getConnection;
 public class ProductosController implements Initializable {
 
 
-
     Acciones acciones = new Acciones();
-    private double xOffset = 0;
-    private double yOffset = 0;
+    Producto producto = new Producto();
 
     @FXML
     private AnchorPane myPane;
@@ -51,7 +52,8 @@ public class ProductosController implements Initializable {
     @FXML
     private AnchorPane panel_home;
 
-
+    @FXML
+    private JFXTextField filterField;
     @FXML
     private AnchorPane panel_productos;
 
@@ -118,8 +120,13 @@ public class ProductosController implements Initializable {
     public TableColumn<Producto, Laboratorio> clmLaboratorio;
 
 
+
+
    @FXML
    private TableView<Producto>tblViewProductos;
+
+    ObservableList<Producto> productsList = FXCollections.observableArrayList();
+
 
 
 
@@ -128,6 +135,7 @@ public class ProductosController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         showProducts();
+
 
     }
 
@@ -151,7 +159,6 @@ public class ProductosController implements Initializable {
 
     @FXML
     void minimizar(MouseEvent event) {
-
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
 
@@ -163,46 +170,23 @@ public class ProductosController implements Initializable {
     ///Menus
     @FXML
     void principal(MouseEvent event) throws IOException {
-        /*Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Main.fxml")));
 
-        //Mover(scene,stage);
-        stage.setScene(scene);
-        stage.show();*/
-        
-        Parent view2 = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
+        acciones.NuevaVentana(event,"Main");
 
-        Scene scene2 = new Scene(view2);
-
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene2);
-        window.show();
 
     }
 
     @FXML
     void productos(MouseEvent event) throws IOException {
-        Parent view2 = FXMLLoader.load(getClass().getResource("/fxml/Productos.fxml"));
 
-        Scene scene2 = new Scene(view2);
-
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene2);
-        window.show();
-
-
-
+        acciones.NuevaVentana(event,"Productos");
+        showProducts();
 
     }
 
 
-    @FXML
-    void nuevo(MouseEvent event) {
-        acciones.Nuevaventana("FrmMedicamentos");
 
-    }
+
 
 
 
@@ -220,7 +204,11 @@ public class ProductosController implements Initializable {
 
     }
 
+    @FXML
+    void nuevo(MouseEvent event) {
+        acciones.NuevaventanaModal("FrmMedicamentos");
 
+    }
 
 
 
@@ -235,11 +223,25 @@ public class ProductosController implements Initializable {
         showProducts();
 
     }
-    
-    
-    
 
-   ///Tabla////
+    @FXML
+    void searchBtnClicked(MouseEvent event)
+    {
+        String name = filterField.getText();
+
+
+        String query = "SELECT * FROM Productos WHERE nombre_producto LIKE '%aaa%'";
+        ConexionBD.executeQuery(query);
+        showProducts();
+    }
+
+
+
+
+
+
+
+    ///Tabla////
 
     public ObservableList<Producto> getProductsList() {
         ObservableList<Producto> productsList = FXCollections.observableArrayList();
@@ -263,12 +265,13 @@ public class ProductosController implements Initializable {
         ResultSet rs;
 
         try {
+            assert connection != null;
             st = connection.createStatement();
             rs = st.executeQuery(query);
             Producto producto;
             while(rs.next()) {
                 producto = new Producto(
-//                                rs.getInt("id_producto"),
+                               rs.getInt("id_producto"),
                                 rs.getString("nombre_producto"),
                                 rs.getString("tipo_producto"),
                                 rs.getString("presentacion_producto"),
@@ -291,11 +294,11 @@ public class ProductosController implements Initializable {
     }
 
 
-   
+
 
     public void showProducts() {
         ObservableList<Producto> list = getProductsList();
-//        clmId.setCellValueFactory(new PropertyValueFactory<Producto,Integer>("id_producto"));
+        //clmId.setCellValueFactory(new PropertyValueFactory<Producto,Integer>("id_producto"));
         clmProductoNombre.setCellValueFactory(new PropertyValueFactory<Producto,String>("nombre_producto"));
 		clmTipo.setCellValueFactory(new PropertyValueFactory<Producto,String>("tipo_producto"));
 		clmPresentacion.setCellValueFactory(new PropertyValueFactory<Producto,String>("presentacion_producto"));

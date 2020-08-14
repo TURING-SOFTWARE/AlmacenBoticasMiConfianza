@@ -16,8 +16,8 @@ public class Producto {
     Laboratorio laboratorio;
 
 
-    public Producto(/*int id_producto,*/ String nombre_producto, String tipo_producto, String presentacion_producto, int lote_producto, Date fecha_vencimiento, String info_producto, String estado_producto, Double precio_unid, Double precio_caja, Laboratorio laboratorio) {
-//        this.id_producto = id_producto;
+    public Producto(int id_producto, String nombre_producto, String tipo_producto, String presentacion_producto, int lote_producto, Date fecha_vencimiento, String info_producto, String estado_producto, Double precio_unid, Double precio_caja, Laboratorio laboratorio) {
+        this.id_producto = id_producto;
         this.nombre_producto = nombre_producto;
         this.tipo_producto = tipo_producto;
         this.presentacion_producto = presentacion_producto;
@@ -31,9 +31,8 @@ public class Producto {
     }
 
 
-
-
-
+    public Producto() {
+    }
 
     public int getId_producto() {
         return this.id_producto;
