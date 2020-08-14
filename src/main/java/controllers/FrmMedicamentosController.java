@@ -1,6 +1,7 @@
 
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.security.Policy;
 import java.sql.Connection;
@@ -42,11 +43,9 @@ import static Conection.ConexionBD.getConnection;
 public class FrmMedicamentosController implements Initializable {
 
     Acciones acciones = new Acciones();
-    private ObservableList<Producto> data ;
 
-    public void setStudentData(ObservableList<Producto> data) {
-        this.data = data ;
-    }
+
+
     @FXML
     private JFXTextField nombreProducto;
 
@@ -104,7 +103,7 @@ public class FrmMedicamentosController implements Initializable {
 
     }
     @FXML
-    void agregar(MouseEvent event) {
+    void agregar(MouseEvent event) throws IOException {
         RadioButton selectedRadioButton = (RadioButton) Estado.getSelectedToggle();
        String query="insert into productos values (null,"+"'" +nombreProducto.getText()+"',"+
                "'"+presentacionProducto.getValue().toString()+"',"
@@ -115,12 +114,16 @@ public class FrmMedicamentosController implements Initializable {
                +Double.parseDouble(precioUnidad.getText())+","+
                +Double.parseDouble(precioCaja.getText())+","+
                "'"+tipoProducto.getValue().toString()+"',"+
-               "2)";
+               "1)";
 
 
 
+
+
+        ConexionBD.executeQuery(query);
 
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
+        acciones.NuevaVentana(event,"Productos");
 
        stage.close();
 

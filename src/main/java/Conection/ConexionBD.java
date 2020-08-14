@@ -26,6 +26,7 @@ public class ConexionBD {
         Connection conn =getConnection() ;
         Statement st;
         try {
+            assert conn != null;
             st = conn.createStatement();
             st.executeUpdate(query);
         } catch (Exception e) {

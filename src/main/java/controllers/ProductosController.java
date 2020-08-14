@@ -2,6 +2,8 @@ package controllers;
 
 import Conection.ConexionBD;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
 import entidades.Laboratorio;
 import entidades.Producto;
@@ -21,15 +23,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import metodos.Acciones;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -40,8 +40,10 @@ import static Conection.ConexionBD.getConnection;
 public class ProductosController implements Initializable {
 
 
+
     Acciones acciones = new Acciones();
-    Producto producto = new Producto();
+    ConexionBD conexionBD = new ConexionBD();
+
 
     @FXML
     private AnchorPane myPane;
@@ -95,6 +97,8 @@ public class ProductosController implements Initializable {
     private JFXButton btnNuevo;
     @FXML
     private JFXButton btnDelete;
+    @FXML
+    private JFXButton btnEditar;
 
     @FXML
     public TableColumn<Producto,Integer>clmId;
@@ -125,14 +129,19 @@ public class ProductosController implements Initializable {
    @FXML
    private TableView<Producto>tblViewProductos;
 
-    ObservableList<Producto> productsList = FXCollections.observableArrayList();
 
+    //observalble list to store data
+    private final ObservableList<Producto> dataList = FXCollections.observableArrayList();
 
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
+
+
 
         showProducts();
 
@@ -217,22 +226,38 @@ public class ProductosController implements Initializable {
 
 
     @FXML
-    void eliminar(MouseEvent event) {
-        String query = "delete from productos where id_producto=1";
-        ConexionBD.executeQuery(query);
+    void eliminar(MouseEvent event) throws SQLException {
+        Producto producto = tblViewProductos.getSelectionModel().getSelectedItem();
+        if (producto != null) {
+
+            String query = "Delete from productos where id_producto="+producto.getId_producto();
+            ConexionBD.executeQuery(query);
+        }
+
         showProducts();
 
     }
 
+
     @FXML
-    void searchBtnClicked(MouseEvent event)
-    {
-        String name = filterField.getText();
-
-
-        String query = "SELECT * FROM Productos WHERE nombre_producto LIKE '%aaa%'";
+    void editar(MouseEvent event) {
+        Producto producto = tblViewProductos.getSelectionModel().getSelectedItem();
+        String query = "UPDATE productos set nombre_producto = 'prueba' where id_producto="+producto.getId_producto();
         ConexionBD.executeQuery(query);
         showProducts();
+    }
+
+
+
+
+
+
+
+    @FXML
+    void searchBtnClicked(MouseEvent event) throws SQLException {
+
+
+
     }
 
 
@@ -297,7 +322,7 @@ public class ProductosController implements Initializable {
 
 
     public void showProducts() {
-        ObservableList<Producto> list = getProductsList();
+       ObservableList<Producto> productsList = getProductsList();
         //clmId.setCellValueFactory(new PropertyValueFactory<Producto,Integer>("id_producto"));
         clmProductoNombre.setCellValueFactory(new PropertyValueFactory<Producto,String>("nombre_producto"));
 		clmTipo.setCellValueFactory(new PropertyValueFactory<Producto,String>("tipo_producto"));
@@ -309,7 +334,41 @@ public class ProductosController implements Initializable {
         clmPrecio_unid.setCellValueFactory(new PropertyValueFactory<Producto,Double>("precio_unid"));
         clmPrecio_caja.setCellValueFactory(new PropertyValueFactory<Producto,Double>("precio_caja"));
        clmLaboratorio.setCellValueFactory(new PropertyValueFactory<Producto,Laboratorio>("laboratorio"));
-        tblViewProductos.setItems(list);
+
+
+        FilteredList<Producto> filteredData = new FilteredList<>(productsList, b -> true);
+
+
+        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(producto -> {
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (producto.getNombre_producto().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+                    return true; // Filter matches first name.
+                } else if (producto.getTipo_producto().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches last name.
+                } else if (producto.getInfo_producto().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                return true; // Filter matches last name.
+                }
+                else if(producto.getLaboratorio().getNombre_laboratorio().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }
+
+                else
+                    return false;
+            });
+        });
+
+
+        SortedList<Producto> sortedData = new SortedList<>(filteredData);
+
+        sortedData.comparatorProperty().bind(tblViewProductos.comparatorProperty());
+
+        tblViewProductos.setItems(sortedData);
 
     }
 
