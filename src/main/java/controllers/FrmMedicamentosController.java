@@ -126,6 +126,8 @@ public class FrmMedicamentosController implements Initializable {
         acciones.NuevaVentana(event,"Productos");
 
        stage.close();
+        MainController medi = new MainController();
+        medi.productos(event);
 
 
 
