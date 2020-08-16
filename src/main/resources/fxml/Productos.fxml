@@ -13,7 +13,7 @@
    <children>
       <AnchorPane fx:id="root_pane" layoutX="192.0" layoutY="21.0" prefHeight="699.0" prefWidth="1327.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="21.0">
          <children>
-            <AnchorPane prefHeight="668.0" prefWidth="1142.0" style="-fx-background-color: #FFFF;" stylesheets="@../styles/ListaProductos.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
+            <AnchorPane layoutY="14.0" prefHeight="685.0" prefWidth="1161.0" style="-fx-background-color: #FFFF;" stylesheets="@../styles/ListaProductos.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
                <children>
                   <TableView fx:id="tblViewProductos" editable="true" layoutX="-154.0" layoutY="128.0" stylesheets="@../styles/ListaProductos.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="40.0">
                      <columns>
