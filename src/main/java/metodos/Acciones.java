@@ -59,6 +59,7 @@ public class Acciones {
         Scene scene2 = new Scene(view2);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene2);
+        window.setMaximized(true);
         Mover(scene2,window);
         window.show();
         } catch (IOException e) {

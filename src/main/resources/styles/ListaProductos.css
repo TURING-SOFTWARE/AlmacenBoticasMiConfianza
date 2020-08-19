@@ -53,9 +53,9 @@
     /*-fx-fill: white ;*/
 }
 
-.table-row-cell:hover:selected .text,.table-row-cell:focused:selected .text{
-    -fx-fill:rgb(173.0,255.0,10.0);
-}
+/*.table-row-cell:hover:selected .text,.table-row-cell:focused:selected .text{*/
+/*    !*-fx-fill:rgb(173.0,255.0,10.0);*!*/
+/*}*/
 
 
 /*.table-row-cell:focused{

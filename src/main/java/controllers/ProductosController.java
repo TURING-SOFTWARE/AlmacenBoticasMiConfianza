@@ -2,8 +2,6 @@ package controllers;
 
 import Conection.ConexionBD;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
 import entidades.Laboratorio;
 import entidades.Producto;
@@ -11,19 +9,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import metodos.Acciones;
 
@@ -32,13 +29,11 @@ import java.net.URL;
 import java.sql.*;
 import java.util.Date;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.scene.Parent;
+import java.util.Set;
 
 import static Conection.ConexionBD.getConnection;
 
 public class ProductosController implements Initializable {
-
 
 
     Acciones acciones = new Acciones();
@@ -239,12 +234,64 @@ public class ProductosController implements Initializable {
     }
 
 
+
+
+    public static boolean showPersonEditDialog(Producto producto) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(ProductosController.class.getResource("/fxml/FrmMedicamentos.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Person");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            //dialogStage.initOwner(stage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            //Set the person into the controller.
+            FrmEditar controller = loader.getController();
+           controller.setDialogStage(dialogStage);
+            controller.setProducto(producto);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static Stage getPrimaryStage() {
+        Stage primaryStage = new Stage();
+        return primaryStage;
+    }
     @FXML
-    void editar(MouseEvent event) {
-        Producto producto = tblViewProductos.getSelectionModel().getSelectedItem();
-        String query = "UPDATE productos set nombre_producto = 'prueba' where id_producto="+producto.getId_producto();
-        ConexionBD.executeQuery(query);
-        showProducts();
+    void editar(MouseEvent event) throws IOException {
+
+        Producto selectedPerson = tblViewProductos.getSelectionModel().getSelectedItem();
+        if (selectedPerson != null) {
+            boolean okClicked =ProductosController.showPersonEditDialog(selectedPerson);
+//            if (okClicked) {
+//
+//            }
+
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+           // alert.initOwner(ProductosController.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
+
+            alert.showAndWait();
+        }
+
+
     }
 
 
@@ -253,12 +300,7 @@ public class ProductosController implements Initializable {
 
 
 
-    @FXML
-    void searchBtnClicked(MouseEvent event) throws SQLException {
 
-
-
-    }
 
 
 
