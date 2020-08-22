@@ -2,6 +2,7 @@ package controllers;
 
 import Conection.ConexionBD;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import entidades.Laboratorio;
 import entidades.Producto;
@@ -18,10 +19,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import metodos.Acciones;
 
 import java.io.IOException;
@@ -39,9 +42,10 @@ public class ProductosController implements Initializable {
     Acciones acciones = new Acciones();
     ConexionBD conexionBD = new ConexionBD();
 
-
+    /// cambio
     @FXML
     private AnchorPane myPane;
+
 
 
     @FXML
@@ -51,6 +55,12 @@ public class ProductosController implements Initializable {
 
     @FXML
     private JFXTextField filterField;
+
+    @FXML
+    private ImageView imagen;
+
+    @FXML
+    private JFXTextArea infoProducto;
     @FXML
     private AnchorPane panel_productos;
 
@@ -86,8 +96,8 @@ public class ProductosController implements Initializable {
 
     @FXML
     private JFXButton btnMantenimiento;
-    
-    
+
+
     @FXML
     private JFXButton btnNuevo;
     @FXML
@@ -121,8 +131,8 @@ public class ProductosController implements Initializable {
 
 
 
-   @FXML
-   private TableView<Producto>tblViewProductos;
+    @FXML
+    private TableView<Producto>tblViewProductos;
 
 
     //observalble list to store data
@@ -135,10 +145,22 @@ public class ProductosController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-
-
-
         showProducts();
+
+
+
+
+
+
+        showProductDetails(null);
+
+
+
+        // Listen for selection changes and show the person details when changed.
+        tblViewProductos.getSelectionModel().selectedItemProperty().addListener(
+              (observable, oldValue, newValue) -> showProductDetails(newValue));
+
+
 
 
     }
@@ -212,8 +234,16 @@ public class ProductosController implements Initializable {
     void nuevo(MouseEvent event) {
         acciones.NuevaventanaModal("FrmMedicamentos");
 
+
+
     }
 
+
+    public void actualizar(){
+        ObservableList<Producto> productsList = getProductsList();
+        SortedList<Producto> sortedData = new SortedList<>(productsList);
+        tblViewProductos.setItems(sortedData);
+    }
 
 
 
@@ -227,9 +257,18 @@ public class ProductosController implements Initializable {
 
             String query = "Delete from productos where id_producto="+producto.getId_producto();
             ConexionBD.executeQuery(query);
+        }else{
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Producto no seleccionado");
+            alert.setContentText("Por favor seleccione un producto de la tabla");
+
+            alert.showAndWait();
         }
 
-        showProducts();
+
+
 
     }
 
@@ -240,7 +279,7 @@ public class ProductosController implements Initializable {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(ProductosController.class.getResource("/fxml/FrmMedicamentos.fxml"));
+            loader.setLocation(ProductosController.class.getResource("/fxml/FrmEditMedicamentos.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
 
             // Create the dialog Stage.
@@ -250,51 +289,76 @@ public class ProductosController implements Initializable {
             //dialogStage.initOwner(stage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
-
+            dialogStage.initStyle(StageStyle.UNDECORATED);
+            Acciones acciones= new Acciones();
+            acciones.Mover(scene,dialogStage);
             //Set the person into the controller.
-            FrmEditar controller = loader.getController();
-           controller.setDialogStage(dialogStage);
+            FrmEditarMedicamentos controller = loader.getController();
+            controller.setDialogStage(dialogStage);
             controller.setProducto(producto);
 
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
 
             return controller.isOkClicked();
+
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
     }
 
+
+
+
+
+
+
     public static Stage getPrimaryStage() {
-        Stage primaryStage = new Stage();
-        return primaryStage;
+        return new Stage();
     }
     @FXML
     void editar(MouseEvent event) throws IOException {
 
         Producto selectedPerson = tblViewProductos.getSelectionModel().getSelectedItem();
+
         if (selectedPerson != null) {
-            boolean okClicked =ProductosController.showPersonEditDialog(selectedPerson);
-//            if (okClicked) {
-//
-//            }
+           boolean okClicked = ProductosController.showPersonEditDialog(selectedPerson);
+           if (okClicked) {
+              actualizar();
+               showProducts();
+           }
 
         } else {
             // Nothing selected.
             Alert alert = new Alert(Alert.AlertType.WARNING);
-           // alert.initOwner(ProductosController.getPrimaryStage());
+            // alert.initOwner(ProductosController.getPrimaryStage());
             alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
+            alert.setHeaderText("Seleccione producto");
+            alert.setContentText("Por favor  selecciones un producto de la tabla.");
 
             alert.showAndWait();
+            //
         }
-
 
     }
 
 
+
+    private void showProductDetails(Producto producto) {
+        if (producto != null) {
+
+            infoProducto.setText(producto.getInfo_producto());
+
+
+
+
+        } else {
+
+            infoProducto.setText("");
+
+        }
+    }
 
 
 
@@ -314,20 +378,20 @@ public class ProductosController implements Initializable {
         ObservableList<Producto> productsList = FXCollections.observableArrayList();
         Connection connection = getConnection();
         String query =   "Select P.id_producto, " +
-                            "P.nombre_producto, " +
-                           "P.tipo_producto," +
-                            "P.presentacion_producto, " +
-                            "P.lote_producto, "+
-                            "P.fecha_vencimiento, "+
-                            "P.info_producto, " +
-                            "P.estado_producto, "+
-                            "P.precio_unid, " +
-                            "P.precio_caja, " +
-                            "L.id_laboratorio, "+
-                            "L.nombre_laboratorio " +
-                            "From productos P " +
-                            "Inner join laboratorio L " +
-                            "On(P.fk_laboratorio = L.id_laboratorio)" ;
+                "P.nombre_producto, " +
+                "P.tipo_producto," +
+                "P.presentacion_producto, " +
+                "P.lote_producto, "+
+                "P.fecha_vencimiento, "+
+                "P.info_producto, " +
+                "P.estado_producto, "+
+                "P.precio_unid, " +
+                "P.precio_caja, " +
+                "L.id_laboratorio, "+
+                "L.nombre_laboratorio " +
+                "From productos P " +
+                "Inner join laboratorio L " +
+                "On(P.fk_laboratorio = L.id_laboratorio)" ;
         Statement st;
         ResultSet rs;
 
@@ -338,19 +402,19 @@ public class ProductosController implements Initializable {
             Producto producto;
             while(rs.next()) {
                 producto = new Producto(
-                               rs.getInt("id_producto"),
-                                rs.getString("nombre_producto"),
-                                rs.getString("tipo_producto"),
-                                rs.getString("presentacion_producto"),
-                                rs.getInt("lote_producto"),
-                                rs.getDate("fecha_vencimiento"),
-                                rs.getString("info_producto"),
-                                rs.getString("estado_producto"),
-                                rs.getDouble("precio_unid"),
-                                rs.getDouble("precio_caja"),
-                                new Laboratorio(rs.getInt("id_laboratorio"),
-                                        rs.getString("nombre_laboratorio")
-                                ));
+                        rs.getInt("id_producto"),
+                        rs.getString("nombre_producto"),
+                        rs.getString("tipo_producto"),
+                        rs.getString("presentacion_producto"),
+                        rs.getInt("lote_producto"),
+                        rs.getDate("fecha_vencimiento"),
+                        rs.getString("info_producto"),
+                        rs.getString("estado_producto"),
+                        rs.getDouble("precio_unid"),
+                        rs.getDouble("precio_caja"),
+                        new Laboratorio(rs.getInt("id_laboratorio"),
+                                rs.getString("nombre_laboratorio")
+                        ));
 
                 productsList.add(producto);
             }
@@ -364,25 +428,26 @@ public class ProductosController implements Initializable {
 
 
     public void showProducts() {
-       ObservableList<Producto> productsList = getProductsList();
+        ObservableList<Producto> productsList = getProductsList();
         //clmId.setCellValueFactory(new PropertyValueFactory<Producto,Integer>("id_producto"));
         clmProductoNombre.setCellValueFactory(new PropertyValueFactory<Producto,String>("nombre_producto"));
-		clmTipo.setCellValueFactory(new PropertyValueFactory<Producto,String>("tipo_producto"));
-		clmPresentacion.setCellValueFactory(new PropertyValueFactory<Producto,String>("presentacion_producto"));
-		clmLote.setCellValueFactory(new PropertyValueFactory<Producto,Integer>("lote_producto"));
+        clmTipo.setCellValueFactory(new PropertyValueFactory<Producto,String>("tipo_producto"));
+        clmPresentacion.setCellValueFactory(new PropertyValueFactory<Producto,String>("presentacion_producto"));
+        clmLote.setCellValueFactory(new PropertyValueFactory<Producto,Integer>("lote_producto"));
         clmFecha_vencimiento.setCellValueFactory(new PropertyValueFactory<Producto,Date>("fecha_vencimiento"));
-        clmInfo_producto.setCellValueFactory(new PropertyValueFactory<Producto,String>("info_producto"));
+        //clmInfo_producto.setCellValueFactory(new PropertyValueFactory<Producto,String>("info_producto"));
         clmEstado_producto.setCellValueFactory(new PropertyValueFactory<Producto,String>("estado_producto"));
         clmPrecio_unid.setCellValueFactory(new PropertyValueFactory<Producto,Double>("precio_unid"));
         clmPrecio_caja.setCellValueFactory(new PropertyValueFactory<Producto,Double>("precio_caja"));
-       clmLaboratorio.setCellValueFactory(new PropertyValueFactory<Producto,Laboratorio>("laboratorio"));
+        clmLaboratorio.setCellValueFactory(new PropertyValueFactory<Producto,Laboratorio>("laboratorio"));
 
 
         FilteredList<Producto> filteredData = new FilteredList<>(productsList, b -> true);
 
-
         filterField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(producto -> {
+
+
 
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
@@ -394,7 +459,7 @@ public class ProductosController implements Initializable {
                 } else if (producto.getTipo_producto().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true; // Filter matches last name.
                 } else if (producto.getInfo_producto().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                return true; // Filter matches last name.
+                    return true; // Filter matches last name.
                 }
                 else if(producto.getLaboratorio().getNombre_laboratorio().toLowerCase().indexOf(lowerCaseFilter) != -1){
                     return true;
@@ -411,6 +476,11 @@ public class ProductosController implements Initializable {
         sortedData.comparatorProperty().bind(tblViewProductos.comparatorProperty());
 
         tblViewProductos.setItems(sortedData);
+
+
+
+
+
 
     }
 

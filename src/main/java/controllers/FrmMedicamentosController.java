@@ -17,6 +17,7 @@ import entidades.Laboratorio;
 import entidades.Producto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -43,6 +44,8 @@ import static Conection.ConexionBD.getConnection;
 public class FrmMedicamentosController implements Initializable {
 
     Acciones acciones = new Acciones();
+    private boolean okClicked = false;
+
 
 
     @FXML
@@ -98,6 +101,10 @@ public class FrmMedicamentosController implements Initializable {
 
     }
 
+    public boolean isOkClicked() {
+        return okClicked;
+    }
+
     @FXML
     void agregar(MouseEvent event) throws IOException {
         RadioButton selectedRadioButton = (RadioButton) Estado.getSelectedToggle();
@@ -119,8 +126,11 @@ public class FrmMedicamentosController implements Initializable {
         acciones.NuevaVentana(event, "Productos");
 
         stage.close();
-        MainController medi = new MainController();
-        medi.productos(event);
+        okClicked = true;
+
+
+
+
 
 
     }

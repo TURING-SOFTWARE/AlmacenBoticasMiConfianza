@@ -16,12 +16,13 @@ import metodos.Acciones;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 
-public class FrmEditar implements Initializable {
+public class FrmEditarMedicamentos implements Initializable {
 
-//    Acciones acciones = new Acciones();
+   Acciones acciones = new Acciones();
 
 
 
@@ -93,8 +94,10 @@ public class FrmEditar implements Initializable {
     @FXML
     private void handleOk() {
         if (isInputValid()) {
+
+
             producto.setNombre_producto(nombreProducto.getText());
-            producto.setEstado_producto(Estado.getSelectedToggle().toString());
+
             producto.setLote_producto(Integer.parseInt(loteProducto.getText()));
 
 
@@ -103,6 +106,33 @@ public class FrmEditar implements Initializable {
         }
     }
 
+
+    @FXML
+    void agregar(MouseEvent event) throws IOException {
+        RadioButton selectedRadioButton = (RadioButton) Estado.getSelectedToggle();
+        String query="UPDATE productos set nombre_producto = "+
+                "'"+ nombreProducto.getText().toString()+ "',"+
+                "presentacion_producto= '"+presentacionProducto.getValue().toString()+ "',"+
+                "lote_producto= "+ Integer.parseInt(loteProducto.getText()) + "," +
+                "fecha_vencimiento= '" + datePicker.getValue() + "'," +
+                "info_producto= '" + infoProducto.getText() + "'," +
+                "estado_producto= '" + selectedRadioButton.getText() + "',"+
+                "precio_unid= "+ Double.parseDouble(precioUnidad.getText()) + "," +
+                "precio_caja= "+Double.parseDouble(precioCaja.getText()) + "," +
+                "tipo_producto= '" + tipoProducto.getValue().toString() +"'"+
+                "WHERE id_producto = "+producto.getId_producto()+";";
+
+
+        ConexionBD.executeQuery(query);
+
+        Stage stage = (Stage) btnCancelar.getScene().getWindow();
+        acciones.NuevaVentana(event, "Productos");
+
+        stage.close();
+        okClicked = true;
+
+
+    }
 
     private boolean isInputValid() {
         String errorMessage = "";
@@ -140,7 +170,17 @@ public class FrmEditar implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        presentacionProducto.getItems().add("Tableta");
+        presentacionProducto.getItems().add("Jarábe");
+        presentacionProducto.getItems().add("Cápsula");
+        presentacionProducto.getItems().add("Grajea");
 
+
+        tipoProducto.getItems().add("Genérico");
+        tipoProducto.getItems().add("Marca");
+
+        laboratorioProducto.getItems().add("Bayer");
+        laboratorioProducto.getItems().add("GardenHouse");
 
     }
 
@@ -149,10 +189,36 @@ public class FrmEditar implements Initializable {
         this.dialogStage = dialogStage;
     }
 
+
+
+
+
     public void setProducto(Producto producto) {
         this.producto = producto;
 
+
+        String estado = producto.getEstado_producto();
+
+
         nombreProducto.setText(producto.getNombre_producto());
-        Estado.setUserData(producto.getEstado_producto());
+        if(estado.equals("Activo")){
+            rdbtnActivo.setSelected(true);
+        }else{
+            rdbtnInacnt.setSelected(true);
+        }
+        loteProducto.setText(Integer.toString(producto.getLote_producto()));
+
+        presentacionProducto.setValue(producto.getPresentacion_producto());
+        laboratorioProducto.setValue(producto.getLaboratorio().getNombre_laboratorio());
+        datePicker.setValue(LocalDate.now());
+        tipoProducto.setValue(producto.getTipo_producto());
+        precioUnidad.setText(Double.toString(producto.getPrecio_unid()));
+        precioCaja.setText(Double.toString(producto.getPrecio_caja()));
+        infoProducto.setText(producto.getInfo_producto());
+
+
+
+
+
     }
 }
