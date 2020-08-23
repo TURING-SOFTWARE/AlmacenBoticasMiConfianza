@@ -44,7 +44,6 @@ import static Conection.ConexionBD.getConnection;
 public class FrmMedicamentosController implements Initializable {
 
     Acciones acciones = new Acciones();
-    private boolean okClicked = false;
 
 
 
@@ -94,6 +93,12 @@ public class FrmMedicamentosController implements Initializable {
     private JFXButton btnCancelar;
 
 
+    private Stage dialogStage;
+    private Producto producto;
+    private boolean okClicked = false;
+
+
+
     @FXML
     void Cancelar(ActionEvent event) {
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
@@ -104,6 +109,8 @@ public class FrmMedicamentosController implements Initializable {
     public boolean isOkClicked() {
         return okClicked;
     }
+
+
 
     @FXML
     void agregar(MouseEvent event) throws IOException {
@@ -152,6 +159,10 @@ public class FrmMedicamentosController implements Initializable {
         laboratorioProducto.getItems().add("2");
 
 
+    }
+
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
     }
 
 

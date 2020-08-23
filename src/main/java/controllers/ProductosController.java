@@ -230,13 +230,13 @@ public class ProductosController implements Initializable {
 
     }
 
-    @FXML
-    void nuevo(MouseEvent event) {
-        acciones.NuevaventanaModal("FrmMedicamentos");
-
-
-
-    }
+//    @FXML
+//    void nuevo(MouseEvent event) {
+//        acciones.NuevaventanaModal("FrmMedicamentos");
+//
+//
+//
+//    }
 
 
     public void actualizar(){
@@ -308,7 +308,37 @@ public class ProductosController implements Initializable {
         }
     }
 
+    public static boolean showPersonGuardarDialog() {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(ProductosController.class.getResource("/fxml/FrmMedicamentos.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
 
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            //dialogStage.initOwner(stage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            dialogStage.initStyle(StageStyle.UNDECORATED);
+            Acciones acciones= new Acciones();
+            acciones.Mover(scene,dialogStage);
+            //Set the person into the controller.
+            FrmMedicamentosController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+           // controller.setProducto(producto);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 
 
@@ -343,6 +373,19 @@ public class ProductosController implements Initializable {
 
     }
 
+    @FXML
+    void nuevo(MouseEvent event) {
+        boolean okClicked = ProductosController.showPersonGuardarDialog();
+        if (okClicked) {
+                actualizar();
+               showProducts();
+           }
+
+
+
+
+
+    }
 
 
     private void showProductDetails(Producto producto) {
