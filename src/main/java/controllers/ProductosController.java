@@ -230,13 +230,7 @@ public class ProductosController implements Initializable {
 
     }
 
-//    @FXML
-//    void nuevo(MouseEvent event) {
-//        acciones.NuevaventanaModal("FrmMedicamentos");
-//
-//
-//
-//    }
+
 
 
     public void actualizar(){
@@ -257,6 +251,8 @@ public class ProductosController implements Initializable {
 
             String query = "Delete from productos where id_producto="+producto.getId_producto();
             ConexionBD.executeQuery(query);
+            actualizar();
+            showProducts();
         }else{
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -266,6 +262,7 @@ public class ProductosController implements Initializable {
 
             alert.showAndWait();
         }
+
 
 
 
