@@ -122,7 +122,7 @@ public class MainController implements Initializable {
 //        window.setScene(scene2);
 //        acciones.Mover(scene2,window);
 //        window.show();
-         acciones.NuevaVentana(event,"Productos");
+         acciones.NuevaVentana(event,"Productos3");
     }
 
     @FXML

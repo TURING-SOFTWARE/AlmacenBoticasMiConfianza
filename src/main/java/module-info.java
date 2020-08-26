@@ -10,6 +10,5 @@ module com.boticaconfianza.boticasconfianzaalmacen {
 
     opens controllers to javafx.fxml;
     exports com.boticaconfianza.boticasconfianzaalmacen;
-    
-    
+
 }

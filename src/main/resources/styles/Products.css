@@ -1,5 +1,20 @@
+/*TablPane styling*/
+.tab{
+    -fx-background-color: -fx-primary;
+}
+
+.tab-header-background{
+    -fx-background-color: -fx-primary;
+}
+
+.tab-label{
+    -fx-text-fill: -fx-secondary;
+    -fx-font-size: 10pt;
+    -fx-background-color: transparent;
+}
 
 
-.mainFxmlClass {
-
+.tab-main{
+    -fx-pref-height : 60;
+    -fx-max-height : 60;
 }
