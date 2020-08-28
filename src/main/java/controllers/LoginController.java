@@ -110,24 +110,6 @@ public class LoginController implements Initializable {
                         stage.close();
                         try {
                             Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Main.fxml")));
-
-//                            scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-//                                @Override
-//                                public void handle(MouseEvent event) {
-//                                    xOffset = event.getSceneX();
-//                                    yOffset = event.getSceneY();
-//                                }
-//                            });
-//
-//                            scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
-//                                @Override
-//                                public void handle(MouseEvent event) {
-//                                    stage.setX(event.getScreenX() - xOffset);
-//                                    stage.setY(event.getScreenY() - yOffset);
-//                                }
-//                            });
-
-
                             stage.setScene(scene);
                             stage.setMaximized(true);
                             stage.show();

@@ -114,14 +114,7 @@ public class MainController implements Initializable {
 
     @FXML
     void productos(MouseEvent event) throws IOException {
-//        Parent view2 = FXMLLoader.load(getClass().getResource("/fxml/Productos.fxml"));
-//
-//        Scene scene2 = new Scene(view2);
-//
-//        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        window.setScene(scene2);
-//        acciones.Mover(scene2,window);
-//        window.show();
+
          acciones.NuevaVentana(event,"Productos3");
     }
 

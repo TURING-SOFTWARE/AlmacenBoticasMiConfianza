@@ -133,13 +133,7 @@ public class ProductosController implements Initializable {
 
     @FXML
     private TableView<Producto>tblViewProductos;
-
-
-    //observalble list to store data
     private final ObservableList<Producto> dataList = FXCollections.observableArrayList();
-
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -403,17 +397,7 @@ public class ProductosController implements Initializable {
 
 
 
-
-
-
-
-
-
-
-
-
     ///Tabla////
-
     public ObservableList<Producto> getProductsList() {
         ObservableList<Producto> productsList = FXCollections.observableArrayList();
         Connection connection = getConnection();
