@@ -119,8 +119,9 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    void inventario(MouseEvent event) {
-            acciones.NuevaventanaModal("Login");
+    void inventario(MouseEvent event) throws IOException {
+        acciones.NuevaVentana(event,"Inventario");
+
     }
 
     @FXML

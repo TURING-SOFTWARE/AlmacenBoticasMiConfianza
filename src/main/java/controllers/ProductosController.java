@@ -187,6 +187,9 @@ public class ProductosController implements Initializable {
 
 
 
+
+
+
     ///Menus
     @FXML
     void principal(MouseEvent event) throws IOException {
@@ -199,20 +202,15 @@ public class ProductosController implements Initializable {
     @FXML
     void productos(MouseEvent event) throws IOException {
 
-        acciones.NuevaVentana(event,"Productos");
+        acciones.NuevaVentana(event,"Productos3");
         showProducts();
 
     }
 
 
-
-
-
-
-
     @FXML
-    void inventario(MouseEvent event) {
-
+    void inventario(MouseEvent event) throws IOException {
+        acciones.NuevaVentana(event,"Inventario");
     }
 
     @FXML
@@ -227,11 +225,17 @@ public class ProductosController implements Initializable {
 
 
 
+
+
+
+
+
     public void actualizar(){
         ObservableList<Producto> productsList = getProductsList();
         SortedList<Producto> sortedData = new SortedList<>(productsList);
         tblViewProductos.setItems(sortedData);
     }
+
 
 
 
@@ -262,6 +266,8 @@ public class ProductosController implements Initializable {
 
 
     }
+
+
 
 
 
@@ -330,6 +336,7 @@ public class ProductosController implements Initializable {
             return false;
         }
     }
+
 
 
 
