@@ -501,12 +501,10 @@ public class ProductosController implements Initializable {
 
         tblViewProductos.setItems(sortedData);
 
-
-
-
-
-
     }
+
+
+
 
 
 

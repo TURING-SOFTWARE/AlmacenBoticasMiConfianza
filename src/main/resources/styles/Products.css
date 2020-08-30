@@ -64,3 +64,7 @@
     -fx-focus-color: transparent;
     -fx-border-color: transparent;
 }
+
+.text-area   {
+    -fx-text-fill: #FFFFFF;
+}
