@@ -28,8 +28,7 @@ import java.util.ResourceBundle;
  */
 public class MainController implements Initializable {
     Acciones acciones = new Acciones();
-    private double xOffset = 0;
-    private double yOffset = 0;
+
 
     @FXML
     private AnchorPane myPane;
@@ -39,7 +38,6 @@ public class MainController implements Initializable {
     private AnchorPane root_pane;
     @FXML
     private AnchorPane panel_home;
-
 
     @FXML
     private AnchorPane panel_productos;
@@ -61,10 +59,10 @@ public class MainController implements Initializable {
 
     @FXML
     private JFXButton btnCerrar;
-    
+
     @FXML
     private JFXButton btnPrincipal;
-    
+
     @FXML
     private JFXButton btnProductos;
 
@@ -102,6 +100,11 @@ public class MainController implements Initializable {
         stage.setIconified(true);
 
     }
+    @FXML
+    void salir(MouseEvent event) throws IOException {
+        acciones.cerrarsesion(event);
+
+    }
     
 
 
@@ -132,6 +135,12 @@ public class MainController implements Initializable {
     void mantenimiento(MouseEvent event) {
 
    }
+
+    @FXML
+    void laboratorio(MouseEvent event) {
+        acciones.NuevaventanaModal("laboratorio");
+    }
+
 
 
 

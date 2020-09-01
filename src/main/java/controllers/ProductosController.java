@@ -144,8 +144,6 @@ public class ProductosController implements Initializable {
 
 
 
-
-
         showProductDetails(null);
 
 
@@ -184,6 +182,11 @@ public class ProductosController implements Initializable {
 
     }
 
+    @FXML
+    void salir(MouseEvent event) throws IOException {
+        acciones.cerrarsesion(event);
+
+    }
 
 
 
@@ -221,6 +224,12 @@ public class ProductosController implements Initializable {
     void mantenimiento(MouseEvent event) {
 
     }
+
+    @FXML
+    void laboratorio(MouseEvent event) {
+        acciones.NuevaventanaModal("laboratorio");
+    }
+
 
 
 

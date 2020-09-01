@@ -38,7 +38,7 @@ public class Acciones {
         try {
 
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("/fxml/"+string+".fxml"));
-            Parent ventana=(Parent)fxmloader.load();
+            Parent ventana= fxmloader.load();
 
             Stage stage = new Stage();
             stage.setScene(new Scene(ventana));
@@ -65,5 +65,16 @@ public class Acciones {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void cerrarsesion(MouseEvent event) throws IOException {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Login.fxml")));
+        Mover(scene,stage);
+        stage.setScene(scene);
+        stage.show();
+
     }
 }

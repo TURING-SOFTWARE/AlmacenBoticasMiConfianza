@@ -17,18 +17,23 @@
 
 <AnchorPane fx:id="myPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProductosController">
    <children>
-      <AnchorPane prefHeight="725.0" prefWidth="195.0" style="-fx-background-color: #4472C4#4472C4;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="-3.0">
+      <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="725.0" prefWidth="195.0" style="-fx-background-color: #4472C4#4472C4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton accessibleRole="MENU" contentDisplay="CENTER" focusTraversable="false" layoutX="39.0" layoutY="42.0" nodeOrientation="LEFT_TO_RIGHT" ripplerFill="#ffffff00" text=" ">
+            <ImageView fitHeight="125.0" fitWidth="99.0" layoutX="48.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/icons8-person_female.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="exit" accessibleRole="MENU" contentDisplay="CENTER" focusTraversable="false" layoutX="110.0" layoutY="72.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#salir" prefHeight="41.0" prefWidth="32.0" ripplerFill="#ffffff00" text=" ">
                <graphic>
-                  <ImageView fitHeight="125.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../imagenes/icons8-checked_user_female.png" />
+                        <Image url="@../imagenes/icons8-export.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnProductos" buttonType="RAISED" layoutX="3.0" layoutY="285.0" onMouseClicked="#productos" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Productos" textFill="#f8f8f8" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="4.0">
+            <JFXButton fx:id="btnProductos2" buttonType="RAISED" layoutX="3.0" layoutY="211.0" onMouseClicked="#productos" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Productos" textFill="#f8f8f8" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="4.0">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,7 +42,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnPrincipal" buttonType="RAISED" layoutX="4.0" layoutY="184.0" onMouseClicked="#principal" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Principal" textFill="#f8f8f8" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="3.0">
+            <JFXButton fx:id="btnPrincipal1" buttonType="RAISED" layoutX="4.0" layoutY="121.0" onMouseClicked="#principal" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Principal" textFill="#f8f8f8" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="3.0">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -46,7 +51,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnInventario" buttonType="RAISED" layoutX="3.0" layoutY="387.0" onMouseClicked="#inventario" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Inventario" textFill="#f8f8f8">
+            <JFXButton fx:id="btnInventario1" buttonType="RAISED" layoutX="3.0" layoutY="397.0" onMouseClicked="#inventario" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Inventario" textFill="#f8f8f8">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -55,7 +60,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnReportes" buttonType="RAISED" layoutX="3.0" layoutY="487.0" onMouseClicked="#reportes" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Reportes" textFill="#f8f8f8">
+            <JFXButton fx:id="btnReportes1" buttonType="RAISED" layoutX="3.0" layoutY="488.0" onMouseClicked="#reportes" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Reportes" textFill="#f8f8f8">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -64,11 +69,20 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnMantenimiento" buttonType="RAISED" layoutX="3.0" layoutY="595.0" onMouseClicked="#mantenimiento" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Mantenimiento" textFill="#f8f8f8">
+            <JFXButton fx:id="btnMantenimiento1" buttonType="RAISED" layoutX="3.0" layoutY="579.0" onMouseClicked="#mantenimiento" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Mantenimiento" textFill="#f8f8f8">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imagenes/mantenimiento.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnLaboratorio" buttonType="RAISED" layoutX="2.0" layoutY="304.0" onMouseClicked="#laboratorio" prefHeight="84.0" prefWidth="188.0" style="-fx-background-color: #4472C4;" text="Laboratorio" textFill="#f8f8f8">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/icons8-laboratory.png" />
                      </image>
                   </ImageView>
                </graphic>

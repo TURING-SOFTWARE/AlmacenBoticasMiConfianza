@@ -39,7 +39,7 @@ public class InventarioController implements Initializable {
     Acciones acciones = new Acciones();
     ConexionBD conexionBD = new ConexionBD();
 
-    /// cambio
+
     @FXML
     private AnchorPane myPane;
 
@@ -132,11 +132,11 @@ public class InventarioController implements Initializable {
     private TableView<Producto>tblViewProductos;
     private final ObservableList<Producto> dataList = FXCollections.observableArrayList();
 
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
-
 
 
 
@@ -164,6 +164,12 @@ public class InventarioController implements Initializable {
     void minimizar(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
+
+    }
+
+    @FXML
+    void salir(MouseEvent event) throws IOException {
+       acciones.cerrarsesion(event);
 
     }
 
@@ -204,6 +210,16 @@ public class InventarioController implements Initializable {
     }
 
 
+    @FXML
+    void laboratorio(MouseEvent event) {
+        acciones.NuevaventanaModal("laboratorio");
+    }
+
+
+
+
+
+
 
 
     public void actualizar(){
@@ -217,22 +233,7 @@ public class InventarioController implements Initializable {
 
     @FXML
     void eliminar(MouseEvent event) throws SQLException {
-        Producto producto = tblViewProductos.getSelectionModel().getSelectedItem();
-        if (producto != null) {
 
-            String query = "Delete from productos where id_producto="+producto.getId_producto();
-            ConexionBD.executeQuery(query);
-            actualizar();
-            showProducts();
-        }else{
-
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Producto no seleccionado");
-            alert.setContentText("Por favor seleccione un producto de la tabla");
-
-            alert.showAndWait();
-        }
 
 
 
@@ -243,70 +244,7 @@ public class InventarioController implements Initializable {
 
 
 
-    public static boolean showPersonEditDialog(Producto producto) {
-        try {
-            // Load the fxml file and create a new stage for the popup dialog.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(ProductosController.class.getResource("/fxml/FrmEditMedicamentos.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
 
-            // Create the dialog Stage.
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("Edit Person");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            //dialogStage.initOwner(stage);
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-            dialogStage.initStyle(StageStyle.UNDECORATED);
-            Acciones acciones= new Acciones();
-            acciones.Mover(scene,dialogStage);
-            //Set the person into the controller.
-            FrmEditarMedicamentos controller = loader.getController();
-            controller.setDialogStage(dialogStage);
-            controller.setProducto(producto);
-
-            // Show the dialog and wait until the user closes it
-            dialogStage.showAndWait();
-
-            return controller.isOkClicked();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public static boolean showPersonGuardarDialog() {
-        try {
-            // Load the fxml file and create a new stage for the popup dialog.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(ProductosController.class.getResource("/fxml/FrmMedicamentos.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-
-            // Create the dialog Stage.
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            //dialogStage.initOwner(stage);
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-            dialogStage.initStyle(StageStyle.UNDECORATED);
-            Acciones acciones= new Acciones();
-            acciones.Mover(scene,dialogStage);
-            //Set the person into the controller.
-            FrmMedicamentosController controller = loader.getController();
-            controller.setDialogStage(dialogStage);
-            // controller.setProducto(producto);
-
-            // Show the dialog and wait until the user closes it
-            dialogStage.showAndWait();
-
-            return controller.isOkClicked();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 
 
 
