@@ -112,6 +112,7 @@ public class LoginController implements Initializable {
                             Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Main.fxml")));
                             stage.setScene(scene);
                             stage.setMaximized(true);
+                            stage.centerOnScreen();
                             stage.show();
                         } catch (IOException ex) {
                             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
@@ -169,6 +170,7 @@ public class LoginController implements Initializable {
                     Stage stage = (Stage) node.getScene().getWindow();
                     stage.close();
                     Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Main.fxml")));
+                    stage.centerOnScreen();
                     Mover(scene,stage);
                     stage.show();
 

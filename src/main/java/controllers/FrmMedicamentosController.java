@@ -1,39 +1,27 @@
 
 package controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.security.Policy;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 import Conection.ConexionBD;
 import com.jfoenix.controls.*;
-import entidades.Laboratorio;
 import entidades.Producto;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import metodos.Acciones;
-
-import static Conection.ConexionBD.getConnection;
 
 
 /**
@@ -41,7 +29,9 @@ import static Conection.ConexionBD.getConnection;
  *
  * @author palmachris7
  */
-public class FrmMedicamentosController implements Initializable {
+public class FrmMedicamentosController<fileChooser> implements Initializable {
+
+
 
     Acciones acciones = new Acciones();
 
@@ -92,10 +82,16 @@ public class FrmMedicamentosController implements Initializable {
     @FXML
     private JFXButton btnCancelar;
 
+   @FXML
+   private ImageView imageview;
 
-    private Stage dialogStage;
-    private Producto producto;
-    private boolean okClicked = false;
+   @FXML
+   private JFXButton btnSubir;
+   private FileChooser fileChooser;
+   private File file;
+   private Image image;
+
+   private boolean okClicked = false;
 
 
 
@@ -162,8 +158,19 @@ public class FrmMedicamentosController implements Initializable {
     }
 
     public void setDialogStage(Stage dialogStage) {
-        this.dialogStage = dialogStage;
     }
 
 
+    public void subir(MouseEvent mouseEvent) {
+        fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Images Files","*.jpg","*.png","*.jpeg")
+        );
+        Stage stage = (Stage) btnSubir.getScene().getWindow();
+        file=fileChooser.showOpenDialog(stage);
+        if(file!=null){
+            image=new Image(file.toURI().toString());
+           imageview.setImage(image);
+        }
+    }
 }

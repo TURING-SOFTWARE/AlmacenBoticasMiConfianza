@@ -60,6 +60,7 @@ public class Acciones {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene2);
         window.setMaximized(true);
+
         Mover(scene2,window);
         window.show();
         } catch (IOException e) {
@@ -72,9 +73,10 @@ public class Acciones {
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/Login.fxml")));
-        Mover(scene,stage);
+       Mover(scene,stage);
         stage.setScene(scene);
+        stage.setMaximized(false);
+        stage.centerOnScreen();
         stage.show();
-
     }
 }
