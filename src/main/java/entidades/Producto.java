@@ -1,5 +1,9 @@
 package entidades;
 
+
+import javafx.scene.image.Image;
+
+import java.sql.Blob;
 import java.util.Date;
 
 public class Producto {
@@ -14,6 +18,9 @@ public class Producto {
     Double precio_unid;
     Double precio_caja;
     Laboratorio laboratorio;
+    Blob image;
+
+
 
 
     public Producto(int id_producto, String nombre_producto, String tipo_producto, String presentacion_producto, int lote_producto, Date fecha_vencimiento, String info_producto, String estado_producto, Double precio_unid, Double precio_caja, Laboratorio laboratorio) {
@@ -30,10 +37,36 @@ public class Producto {
         this.laboratorio = laboratorio;
     }
 
+    public Producto(int id_producto, String nombre_producto, String tipo_producto, String presentacion_producto, int lote_producto, Date fecha_vencimiento, String info_producto, String estado_producto, Double precio_unid, Double precio_caja, Laboratorio laboratorio, Blob image) {
+        this.id_producto = id_producto;
+        this.nombre_producto = nombre_producto;
+        this.tipo_producto = tipo_producto;
+        this.presentacion_producto = presentacion_producto;
+        this.lote_producto = lote_producto;
+        this.fecha_vencimiento = fecha_vencimiento;
+        this.info_producto = info_producto;
+        this.estado_producto = estado_producto;
+        this.precio_unid = precio_unid;
+        this.precio_caja = precio_caja;
+        this.laboratorio = laboratorio;
+        this.image = image;
+    }
 
     public Producto() {
     }
 
+
+
+
+
+
+    public Blob getImage() {
+        return image;
+    }
+
+    public void setImage(Blob image) {
+        this.image = image;
+    }
     public int getId_producto() {
         return this.id_producto;
     }

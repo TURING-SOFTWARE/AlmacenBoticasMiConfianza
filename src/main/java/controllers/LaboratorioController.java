@@ -124,13 +124,7 @@ public class LaboratorioController implements Initializable {
 
                 if (laboratorio.getNombre_laboratorio().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
                     return true; // Filter matches first name.
-                } else if (laboratorio.getEstado_laboratorio().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    return true; // Filter matches last name.
-
-                }
-
-                else
-                    return false;
+                } else return laboratorio.getEstado_laboratorio().toLowerCase().indexOf(lowerCaseFilter) != -1; // Filter matches last name.
             });
         });
 

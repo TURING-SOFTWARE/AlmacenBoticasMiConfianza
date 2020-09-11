@@ -10,12 +10,22 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import metodos.Acciones;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -69,7 +79,15 @@ public class FrmEditarMedicamentos implements Initializable {
 
     @FXML
     private JFXButton btnCancelar;
+    @FXML
+    private ImageView imageview;
 
+    @FXML
+    private JFXButton btnSubir;
+    private FileChooser fileChooser;
+    private File file;
+    private Image image;
+    private FileInputStream fis;
 
     private Stage dialogStage;
     private Producto producto;
@@ -110,20 +128,30 @@ public class FrmEditarMedicamentos implements Initializable {
     @FXML
     void agregar(MouseEvent event) throws IOException {
         RadioButton selectedRadioButton = (RadioButton) Estado.getSelectedToggle();
-        String query="UPDATE productos set nombre_producto = "+
-                "'"+ nombreProducto.getText().toString()+ "',"+
-                "presentacion_producto= '"+presentacionProducto.getValue().toString()+ "',"+
-                "lote_producto= "+ Integer.parseInt(loteProducto.getText()) + "," +
-                "fecha_vencimiento= '" + datePicker.getValue() + "'," +
-                "info_producto= '" + infoProducto.getText() + "'," +
-                "estado_producto= '" + selectedRadioButton.getText() + "',"+
-                "precio_unid= "+ Double.parseDouble(precioUnidad.getText()) + "," +
-                "precio_caja= "+Double.parseDouble(precioCaja.getText()) + "," +
-                "tipo_producto= '" + tipoProducto.getValue().toString() +"'"+
-                "WHERE id_producto = "+producto.getId_producto()+";";
-
-
-        ConexionBD.executeQuery(query);
+        fis=new FileInputStream(file);
+        Connection con = ConexionBD.getConnection();
+        String query = ("UPDATE productos SET nombre_producto=?,presentacion_producto=?,lote_producto=?,fecha_vencimiento=?,info_producto=?,estado_producto=?,precio_unid=?,precio_caja=?,tipo_producto=?,fk_laboratorio=?,imagen=?  WHERE id_producto=?");
+        try {
+            assert con != null;
+            try (PreparedStatement ps = con.prepareStatement(query)) {
+                ps.setInt(12, producto.getId_producto());
+                ps.setString(1,nombreProducto.getText().toString());
+                ps.setString(2, presentacionProducto.getValue().toString());
+                ps.setInt(3, Integer.parseInt(loteProducto.getText()));
+                ps.setString(4, String.valueOf(datePicker.getValue()));
+                ps.setString(5, infoProducto.getText());
+                ps.setString(6, selectedRadioButton.getText());
+                ps.setDouble(7, Double.parseDouble(precioUnidad.getText()));
+                ps.setDouble(8, Double.parseDouble(precioCaja.getText()));
+                ps.setString(9, tipoProducto.getValue().toString());
+                ps.setInt(10, 1);
+             // Imagen
+                ps.setBinaryStream(11, (InputStream)fis,(int)file.length());
+                ps.executeUpdate();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
         acciones.NuevaVentana(event, "Productos");
@@ -182,6 +210,8 @@ public class FrmEditarMedicamentos implements Initializable {
         laboratorioProducto.getItems().add("Bayer");
         laboratorioProducto.getItems().add("GardenHouse");
 
+
+
     }
 
 
@@ -190,7 +220,18 @@ public class FrmEditarMedicamentos implements Initializable {
     }
 
 
-
+    public void subir(MouseEvent mouseEvent) {
+        fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Images Files","*.jpg","*.png","*.jpeg")
+        );
+        Stage stage = (Stage) btnSubir.getScene().getWindow();
+        file=fileChooser.showOpenDialog(stage);
+        if(file!=null){
+            image=new Image(file.toURI().toString());
+            imageview.setImage(image);
+        }
+    }
 
 
     public void setProducto(Producto producto) {

@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.css.Size;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -27,7 +29,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import metodos.Acciones;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.sql.*;
 import java.util.Date;
@@ -142,15 +144,22 @@ public class ProductosController implements Initializable {
         showProducts();
 
 
-
-
-        showProductDetails(null);
-
+        try {
+            showProductDetails(null);
+        } catch (FileNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
 
 
         // Listen for selection changes and show the person details when changed.
         tblViewProductos.getSelectionModel().selectedItemProperty().addListener(
-              (observable, oldValue, newValue) -> showProductDetails(newValue));
+              (observable, oldValue, newValue) -> {
+                  try {
+                      showProductDetails(newValue);
+                  } catch (FileNotFoundException | SQLException e) {
+                      e.printStackTrace();
+                  }
+              });
 
 
 
@@ -395,20 +404,29 @@ public class ProductosController implements Initializable {
     }
 
 
-    private void showProductDetails(Producto producto) {
+    private void showProductDetails(Producto producto) throws FileNotFoundException, SQLException {
         if (producto != null) {
 
             infoProducto.setText(producto.getInfo_producto());
 
-
+            try {
+                Blob img = producto.getImage();
+                InputStream inputStream= img.getBinaryStream();
+                Image image = new Image(inputStream);
+                imagen.setImage(image);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
 
 
         } else {
 
             infoProducto.setText("");
+            imagen.setImage(null);
 
         }
     }
+
 
 
 
@@ -427,6 +445,7 @@ public class ProductosController implements Initializable {
                 "P.estado_producto, "+
                 "P.precio_unid, " +
                 "P.precio_caja, " +
+                "P.imagen, "+
                 "L.id_laboratorio, "+
                 "L.nombre_laboratorio " +
                 "From productos P " +
@@ -454,9 +473,17 @@ public class ProductosController implements Initializable {
                         rs.getDouble("precio_caja"),
                         new Laboratorio(rs.getInt("id_laboratorio"),
                                 rs.getString("nombre_laboratorio")
-                        ));
+                        ),
+                       rs.getBlob("imagen")
+                );
 
                 productsList.add(producto);
+
+
+
+
+
+
             }
         } catch (Exception e) {
             e.printStackTrace();

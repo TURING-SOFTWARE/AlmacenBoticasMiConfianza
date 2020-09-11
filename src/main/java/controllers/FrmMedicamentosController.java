@@ -2,8 +2,13 @@
 package controllers;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import Conection.ConexionBD;
@@ -90,6 +95,7 @@ public class FrmMedicamentosController<fileChooser> implements Initializable {
    private FileChooser fileChooser;
    private File file;
    private Image image;
+   private FileInputStream fis;
 
    private boolean okClicked = false;
 
@@ -110,20 +116,44 @@ public class FrmMedicamentosController<fileChooser> implements Initializable {
 
     @FXML
     void agregar(MouseEvent event) throws IOException {
+        fis=new FileInputStream(file);
+        Connection con = ConexionBD.getConnection();
         RadioButton selectedRadioButton = (RadioButton) Estado.getSelectedToggle();
-        String query = "insert into productos values (null," + "'" + nombreProducto.getText() + "'," +
-                "'" + presentacionProducto.getValue().toString() + "',"
-                + Integer.parseInt(loteProducto.getText()) + "," +
-                "'" + datePicker.getValue() + "'," +
-                "'" + infoProducto.getText() + "'," +
-                "'" + selectedRadioButton.getText() + "',"
-                + Double.parseDouble(precioUnidad.getText()) + "," +
-                +Double.parseDouble(precioCaja.getText()) + "," +
-                "'" + tipoProducto.getValue().toString() + "'," +
-                "1)";
+//        String query = "insert into productos values (null," + "'" + nombreProducto.getText() + "'," +
+//                "'" + presentacionProducto.getValue().toString() + "',"
+//                + Integer.parseInt(loteProducto.getText()) + "," +
+//                "'" + datePicker.getValue() + "'," +
+//                "'" + infoProducto.getText() + "'," +
+//                "'" + selectedRadioButton.getText() + "',"
+//                + Double.parseDouble(precioUnidad.getText()) + "," +
+//                +Double.parseDouble(precioCaja.getText()) + "," +
+//                "'" + tipoProducto.getValue().toString() + "'," +
+//                "1)";
 
 
-        ConexionBD.executeQuery(query);
+        try {
+            assert con != null;
+            try (PreparedStatement ps = con.prepareStatement("INSERT INTO productos VALUES (?,?,?,?,?,?,?,?,?,?,?,?)")) {
+                ps.setString(1,null);
+                ps.setString(2, nombreProducto.getText());
+                ps.setString(3, presentacionProducto.getValue().toString());
+                ps.setInt(4, Integer.parseInt(loteProducto.getText()));
+                ps.setString(5, String.valueOf(datePicker.getValue()));
+                ps.setString(6, infoProducto.getText());
+                ps.setString(7, selectedRadioButton.getText());
+                ps.setDouble(8, Double.parseDouble(precioUnidad.getText()));
+                ps.setDouble(9, Double.parseDouble(precioCaja.getText()));
+                ps.setString(10, tipoProducto.getValue().toString());
+                ps.setInt(11,1);
+                // Imagen
+                ps.setBinaryStream(12, (InputStream)fis,(int)file.length());
+
+                ps.execute();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
 
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
         acciones.NuevaVentana(event, "Productos");
